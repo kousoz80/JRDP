@@ -1,0 +1,622 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!-- なんちゃってXML version 0.1( ObjectEditor専用 ) -->
+<xobject>
+<ID>project</ID>
+<x0>0</x0>
+<y0>0</y0>
+<width>200</width>
+<height>100</height>
+<ID_maker>14</ID_maker>
+<objectname>jrdp_server</objectname>
+<description>新規のアプリケーション</description>
+<プロパティ>
+<ID>properties</ID>
+<LookandFeel>javax.swing.plaf.metal.MetalLookAndFeel</LookandFeel>
+<MainWinx0>0</MainWinx0>
+<MainWiny0>0</MainWiny0>
+<MainWinWidth>1024</MainWinWidth>
+<MainWinHeight>740</MainWinHeight>
+<MesgWinx0>0</MesgWinx0>
+<MesgWiny0>0</MesgWiny0>
+<MesgWinWidth>1024</MesgWinWidth>
+<MesgWinHeight>740</MesgWinHeight>
+<FileWinx0>36</FileWinx0>
+<FileWiny0>478</FileWiny0>
+<FileWinWidth>578</FileWinWidth>
+<FileWinHeight>262</FileWinHeight>
+<EditWinx0>347</EditWinx0>
+<EditWiny0>0</EditWiny0>
+<EditWinWidth>676</EditWinWidth>
+<EditWinHeight>541</EditWinHeight>
+<PropWinx0>1</PropWinx0>
+<PropWiny0>1</PropWiny0>
+<PropWinWidth>615</PropWinWidth>
+<PropWinHeight>448</PropWinHeight>
+<DividerLocation1>2</DividerLocation1>
+<DividerLocation2>2</DividerLocation2>
+<ToolBarVisible>1</ToolBarVisible>
+<ViewSourceAtCompile>0</ViewSourceAtCompile>
+<NoSourceCreate>0</NoSourceCreate>
+<JavaEditCommand>geany</JavaEditCommand>
+<JavaViewCommand></JavaViewCommand>
+<HelpCommand></HelpCommand>
+<ApplicationType>0</ApplicationType>
+<CompileCommand0>./compile_java</CompileCommand0>
+<RunCommand0>./run_java</RunCommand0>
+<GUIDesignerCommand0>java -jar guidsin.jar -java</GUIDesignerCommand0>
+<ImportFiles0> import java.awt.*;
+ import java.awt.event.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+import java.awt.geom.*;
+import java.awt.print.*;
+import javax.swing.border.*;
+import javax.swing.filechooser.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+import java.awt.image.BufferedImage;
+import javax.sound.sampled.*;
+
+import java.awt.AWTException;
+import java.awt.Rectangle;
+import java.awt.Robot;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.awt.event.InputEvent;
+import javax.imageio.ImageIO;
+
+
+class Starter{
+  public static void main( String args[] ){
+    %AppName% ap = new %AppName%();
+    ap.ARGS = args;
+    ap.Start();
+  }
+}
+</ImportFiles0>
+<ProgramStartupCode0> String[] ARGS;
+</ProgramStartupCode0>
+<NativeHelpCommand0></NativeHelpCommand0>
+<CompileCommand1>./compile_applet</CompileCommand1>
+<RunCommand1>./run_applet</RunCommand1>
+<GUIDesignerCommand1>java -jar guidsin.jar -applet</GUIDesignerCommand1>
+<ImportFiles1> import java.awt.*;
+ import java.awt.event.*;
+ import java.applet.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+ public class javatext extends Applet {
+   %AppName% ap;
+   public void init() {
+     ap = new %AppName%();
+     ap.APPLET = this;
+     ap.Start();
+   }
+ }
+</ImportFiles1>
+<ProgramStartupCode1> Applet APPLET;
+</ProgramStartupCode1>
+<NativeHelpCommand1></NativeHelpCommand1>
+<CompileCommand2>./compile_cpp</CompileCommand2>
+<RunCommand2>./run_cpp</RunCommand2>
+<GUIDesignerCommand2></GUIDesignerCommand2>
+<ImportFiles2>#include &lt;stdio.h&gt;
+
+void Startup();
+</ImportFiles2>
+<ProgramStartupCode2>int main(){
+ Startup();
+ %AppName%::Start();
+ }
+</ProgramStartupCode2>
+<NativeHelpCommand2></NativeHelpCommand2>
+<CompileCommand3>./compile_cppw</CompileCommand3>
+<RunCommand3>./run_cppw</RunCommand3>
+<GUIDesignerCommand3>java -jar guidsin.jar -cpp</GUIDesignerCommand3>
+<ImportFiles3>#include &lt;stdio.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;math.h&gt;
+#include &quot;Ekagen.h&quot;
+void Startup();
+</ImportFiles3>
+<ProgramStartupCode3>void Emain(){
+Startup();
+%AppName%::Start();
+}
+</ProgramStartupCode3>
+<NativeHelpCommand3></NativeHelpCommand3>
+<MoveStep>8</MoveStep>
+<ImageEditCommand></ImageEditCommand>
+<CompilerFileName>javac.exe</CompilerFileName>
+<CompileCommand4>./compile_android2 Test com example test</CompileCommand4>
+<RunCommand4>echo no action</RunCommand4>
+<GUIDesignerCommand4>java -jar guidsin.jar -android</GUIDesignerCommand4>
+<ImportFiles4>package com.example.test;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.View;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.widget.Button;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+import android.widget.EditText;
+import android.text.SpannableStringBuilder;
+import android.text.TextWatcher;
+import android.text.Editable;
+import android.graphics.Matrix;
+import android.graphics.Typeface;
+import android.graphics.RectF;
+import android.graphics.BitmapFactory;
+import java.io.*;
+ import java.net.*;
+import java.util.*;
+import java.text.SimpleDateFormat;
+import android.media.MediaPlayer;
+import android.os.Handler;
+import android.content.res.Configuration;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.app.Activity;
+import android.graphics.Color;
+
+import android.widget.AbsoluteLayout;
+import android.widget.*;
+import android.view.Gravity;
+import android.view.View.OnClickListener;
+
+import android.hardware.Camera;
+
+public class HelloWorld extends Activity {
+  public void onCreate(Bundle bundle) {
+    super.onCreate(bundle);
+    %AppName% ap = new %AppName%();
+    ap.ACTIVITY = this;
+    ap.Start();
+  }
+}
+</ImportFiles4>
+<ProgramStartupCode4>Activity ACTIVITY;
+</ProgramStartupCode4>
+<NativeHelpCommand4>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    package=&quot;com.example.test&quot;
+    android:versionCode=&quot;1&quot;
+    android:versionName=&quot;1.0&quot; &gt;
+
+    
+    
+  &lt;uses-permission android:name=&quot;android.permission.CAMERA&quot; /&gt; 
+  &lt;uses-feature android:name=&quot;android.hardware.camera&quot; /&gt; 
+  &lt;uses-feature android:name=&quot;android.hardware.usb.host&quot; /&gt; 
+  &lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot;/&gt;
+  &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt; 
+  &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+
+  &lt;uses-sdk android:minSdkVersion=&quot;3&quot; android:targetSdkVersion=&quot;21&quot;/&gt;
+  
+ 
+    &lt;application android:label=&quot;@string/app_name&quot; &gt;
+        &lt;activity
+            android:name=&quot;HelloWorld&quot;
+            android:label=&quot;@string/app_name&quot; &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+
+                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;
+</NativeHelpCommand4>
+<HtmlEditCommand></HtmlEditCommand>
+<CompileCommand5></CompileCommand5>
+<RunCommand5>java -jar basic.jar test.bas</RunCommand5>
+<GUIDesignerCommand5></GUIDesignerCommand5>
+<ImportFiles5></ImportFiles5>
+<ProgramStartupCode5>gosub @_PSTART
+end
+</ProgramStartupCode5>
+<NativeHelpCommand5></NativeHelpCommand5>
+<NoOptimizePin>0</NoOptimizePin>
+<CompileCommand6>./compile_ai01</CompileCommand6>
+<RunCommand6>./run_ai01</RunCommand6>
+<GUIDesignerCommand6></GUIDesignerCommand6>
+<ImportFiles6>#include &lt;setjmp.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdarg.h&gt;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;math.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;arpa/inet.h&gt;
+#include &lt;netdb.h&gt;
+
+#include &lt;X11/Xlib.h&gt;
+#include &lt;X11/Xutil.h&gt;
+#include &lt;X11/Xlocale.h&gt; /* ロケール用ヘッダーファイル */
+#include &lt;X11/xpm.h&gt;
+#include &lt;sys/time.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;termios.h&gt;
+#include &lt;errno.h&gt;
+</ImportFiles6>
+<ProgramStartupCode6>int ARGC; char** ARGV;
+int main( int argc, char** argv ){
+  ARGC=argc;
+  ARGV=argv;
+  _PSTART();
+}
+</ProgramStartupCode6>
+<NativeHelpCommand6></NativeHelpCommand6>
+</プロパティ>
+<codeclip>
+<ID>_CSTART</ID>
+<x0>16</x0>
+<y0>6</y0>
+<width>133</width>
+<height>24</height>
+<codetext> String[] ARGS;
+</codetext>
+</codeclip>
+<pin>
+<ID>_PSTART</ID>
+<x0>29</x0>
+<y0>40</y0>
+<width>55</width>
+<height>24</height>
+<text>Start()</text>
+<px>50</px>
+<py>50</py>
+</pin>
+<codeclip>
+<ID>_C1</ID>
+<x0>94</x0>
+<y0>92</y0>
+<width>263</width>
+<height>34</height>
+<codetext>// サーバースレッド
+class ServerThread extends Thread {
+  ServerSocket serverSocket = null;
+  Socket socket;
+
+  // スレッドのメインルーチン
+  public void run() {
+
+dprint(&quot;start server\n&quot;);
+  
+   // サーバーを起動
+   try {
+      serverSocket = new ServerSocket(port);
+      while(true){
+        is_running = true;
+        socket = serverSocket.accept();
+        new IOThread(socket).start();
+        while( is_running) Thread.sleep(100);
+      }
+    } catch (Exception e) {
+       try {
+          dprint( &quot;robot_test_server: &quot;+e+&quot;\n&quot; );
+          serverSocket.close();
+       } catch (Exception ee) {}
+    }
+
+dprint(&quot;end server\n&quot;);
+  }//run()
+
+}//~ServerThread
+</codetext>
+</codeclip>
+<operation>
+<ID>_O3</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>97</x0>
+<y0>34</y0>
+<width>149</width>
+<height>48</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>28</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// サーバーを起動
+
+
+java.awt.GraphicsEnvironment env = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment();
+java.awt.DisplayMode displayMode = env.getDefaultScreenDevice().getDisplayMode();
+
+// 変数widthとheightに画面の解像度の幅と高さを代入
+screen_width  = displayMode.getWidth();
+screen_height = displayMode.getHeight();
+
+try{
+  robot = new Robot();
+  bounds = new Rectangle(0, 0, screen_width, screen_height);
+  new ServerThread().start();
+} catch(Exception e){ 
+  dprint( &quot;ERROR!&quot;);
+  System.exit(0);
+}
+
+</codetext>
+</operation>
+<relation>
+<ID>_R4</ID>
+<pin1name>_PSTART</pin1name>
+<pin2name>_O3</pin2name>
+</relation>
+<codeclip>
+<ID>_C5</ID>
+<x0>91</x0>
+<y0>133</y0>
+<width>254</width>
+<height>34</height>
+<codetext>// サーバーの入出力スレッド
+class IOThread extends Thread {
+    Socket client;
+    InputStream  in;
+    DataOutputStream out;
+
+    // コンストラクタ
+  IOThread(Socket socket){
+    client = socket;
+  }
+
+  // スレッドのメインルーチン
+  public void run() {
+    byte cc[] = new byte[8];
+    int key = 0, x = 0, y = 0;
+
+    try {
+      in   = client.getInputStream();
+      out = new DataOutputStream(client.getOutputStream());
+      while( in.available() &lt; 4 ) ;
+      in.read( cc, 0, 4 );
+      key = ((int)cc[0] &amp; 0xff) | (((int)cc[1] &amp; 0xff)&lt;&lt;8) | (((int)cc[2] &amp; 0xff)&lt;&lt;16) | (((int)cc[3] &amp; 0xff)&lt;&lt;24);
+      if( key != pass ){
+        dprint(&quot;pass code incorrect. exit.\n&quot;);
+         client.close();
+         is_running = false;
+         System.exit(0);
+      }
+         
+      dprint(&quot;start i/o thread\n&quot;);
+      while( is_running ){
+        while( in.available() &lt; 5 ){
+          capture( out );
+          try{  Thread.sleep(CYCLE_TIME);  } catch(Exception e ){}
+        }
+        cc[0] = (byte)0;
+        in.read( cc, 0, 5 );
+        int type  = (int)cc[0];
+        switch(type){
+
+        case KEY_EVENT_DOWN:
+          key = ((int)cc[1] &amp; 0xff) | (((int)cc[2] &amp; 0xff)&lt;&lt;8) | (((int)cc[3] &amp; 0xff)&lt;&lt;16) | (((int)cc[4] &amp; 0xff)&lt;&lt;24);
+          robot.keyPress( key_code(key) );
+          break;
+
+        case KEY_EVENT_UP:
+          key= ((int)cc[1] &amp; 0xff) | (((int)cc[2] &amp; 0xff)&lt;&lt;8) | (((int)cc[3] &amp; 0xff)&lt;&lt;16) | (((int)cc[4] &amp; 0xff)&lt;&lt;24);
+          robot.keyRelease( key_code(key) );
+          break;
+
+        case TOUCH_EVENT:
+          x = (((int)cc[1] &amp; 0xff) | (((int)cc[2] &amp; 0xff)&lt;&lt;8)) * screen_width  / 9999;
+          y = (((int)cc[3] &amp; 0xff) | (((int)cc[4] &amp; 0xff)&lt;&lt;8)) * screen_height / 9999;
+          robot.mouseMove( x, y );
+          robot.mousePress(InputEvent.BUTTON1_MASK);
+          robot.delay(DELAY_TIME);
+          robot.mouseRelease(InputEvent.BUTTON1_MASK);
+          break;
+
+        case EXEC_EVENT:
+          String cmd = &quot;&quot;;
+          while(true){
+             while( in.available() &lt; 1 ) {}
+             in.read( cc, 6, 1 );
+             char ch = (char)cc[6];
+             if( ch == &apos;\r&apos; ) break;
+             cmd = cmd + ch;
+          }
+          Runtime.getRuntime().exec(cmd);
+          break;
+           
+        default:
+          is_running = false;
+
+           }
+         }
+    } catch(IOException e){ dprint( &quot;exception:i/o stream\n&quot; ); }
+    try{
+      is_running = false;
+      cc[0] = (byte)0;
+      client.close();
+    } catch(Exception e){dprint( &quot;exception:client close\n&quot; ); }
+
+dprint(&quot;exit i/o thread\n&quot;);
+
+  }//run()
+}//~IOThread
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C6</ID>
+<x0>419</x0>
+<y0>20</y0>
+<width>225</width>
+<height>64</height>
+<codetext>// デバッグ出力
+public void dprint(String msg){
+  System.out.println(msg);
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C9</ID>
+<x0>421</x0>
+<y0>87</y0>
+<width>330</width>
+<height>332</height>
+<codetext>// 変数
+static final int CYCLE_TIME = 100;
+static final int DELAY_TIME = 50;
+static final int KEY_EVENT_DOWN = 1;
+static final int KEY_EVENT_UP = 2;
+static final int TOUCH_EVENT = 3;
+static final int EXEC_EVENT = 4;
+static final int EXIT_EVENT = 127;
+
+// 設定項目
+int port = 5001;
+int scale = 2; // 画面サイズ縮小率
+int pass = 12345678;
+int screen_width = 1024;
+int screen_height = 768;
+
+// 変数
+Robot robot;
+Rectangle bounds;
+boolean is_running = false;
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C10</ID>
+<x0>91</x0>
+<y0>174</y0>
+<width>303</width>
+<height>34</height>
+<codetext>// 画面をキャプチャして送信する
+public void capture( DataOutputStream out ){
+ 
+//dprint(&quot;capture\n&quot;);
+
+  try{
+    int width = screen_width / scale, height = screen_height / scale;
+    BufferedImage img = robot.createScreenCapture(bounds);
+	BufferedImage img2 = new BufferedImage( width, height, img.getType() );
+	img2.getGraphics().drawImage(img.getScaledInstance(width, height, img.SCALE_AREA_AVERAGING), 0, 0, width, height, null);
+    ImageIO.write( img2, &quot;jpg&quot;, out );
+  } catch(Exception e ){dprint(&quot;capture: &quot;+e+&quot;\n&quot;);}
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C12</ID>
+<x0>87</x0>
+<y0>215</y0>
+<width>312</width>
+<height>33</height>
+<codetext>// androidキーコードをJavaキーコードに変換する
+public int key_code( int key){
+switch(key){
+case 7:     return KeyEvent.VK_0;
+case 8:     return KeyEvent.VK_1;
+case 9:     return KeyEvent.VK_2;
+case 10:   return KeyEvent.VK_3;
+case 11:   return KeyEvent.VK_4;
+case 12:   return KeyEvent.VK_5;
+case 13:   return KeyEvent.VK_6;
+case 14:   return KeyEvent.VK_7;
+case 15:   return KeyEvent.VK_8;
+case 16:   return KeyEvent.VK_9;
+case 19:   return KeyEvent.VK_UP;
+case 20:   return KeyEvent.VK_DOWN;
+case 21:   return KeyEvent.VK_LEFT;
+case 22:   return KeyEvent.VK_RIGHT;
+case 29:   return KeyEvent.VK_A;
+case 30:   return KeyEvent.VK_B;
+case 31:   return KeyEvent.VK_C;
+case 32:   return KeyEvent.VK_D;
+case 33:   return KeyEvent.VK_E;
+case 34:   return KeyEvent.VK_F;
+case 35:   return KeyEvent.VK_G;
+case 36:   return KeyEvent.VK_H;
+case 37:   return KeyEvent.VK_I;
+case 38:   return KeyEvent.VK_J;
+case 39:   return KeyEvent.VK_K;
+case 40:   return KeyEvent.VK_L;
+case 41:   return KeyEvent.VK_M;
+case 42:   return KeyEvent.VK_N;
+case 43:   return KeyEvent.VK_O;
+case 44:   return KeyEvent.VK_P;
+case 45:   return KeyEvent.VK_Q;
+case 46:   return KeyEvent.VK_R;
+case 47:   return KeyEvent.VK_S;
+case 48:   return KeyEvent.VK_T;
+case 49:   return KeyEvent.VK_U;
+case 50:   return KeyEvent.VK_V;
+case 51:   return KeyEvent.VK_W;
+case 52:   return KeyEvent.VK_X;
+case 53:   return KeyEvent.VK_Y;
+case 54:   return KeyEvent.VK_Z;
+case 55:   return KeyEvent.VK_COMMA;
+case 56:   return KeyEvent.VK_PERIOD;
+case 57:   return KeyEvent.VK_ALT;
+case 58:   return KeyEvent.VK_CONTROL;
+case 59:   return KeyEvent.VK_SHIFT;
+case 60:   return KeyEvent.VK_KANJI;
+case 61:   return KeyEvent.VK_TAB;
+case 62:   return KeyEvent.VK_SPACE;
+case 66:   return KeyEvent.VK_ENTER;
+case 67:   return KeyEvent.VK_BACK_SPACE;
+case 69:   return KeyEvent.VK_MINUS;
+case 70:   return KeyEvent.VK_EQUALS;
+case 71:   return KeyEvent.VK_OPEN_BRACKET;
+case 72:   return KeyEvent.VK_CLOSE_BRACKET;
+case 73:   return KeyEvent.VK_BACK_SLASH;
+case 74:   return KeyEvent.VK_SEMICOLON;
+case 75:   return KeyEvent.VK_QUOTE;
+case 76:   return KeyEvent.VK_SLASH;
+case 77:   return KeyEvent.VK_AT;
+case 81:   return KeyEvent.VK_PLUS;
+default:
+    if( key &gt; 0xffff ) return key &amp; 0xffff;
+    return KeyEvent.VK_SPACE; // 分からないときはスペースキーのコードを返す
+}
+
+
+}
+
+</codetext>
+</codeclip>
+</xobject>

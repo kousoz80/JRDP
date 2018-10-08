@@ -1,0 +1,1909 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!-- なんちゃってXML version 0.1( ObjectEditor専用 ) -->
+<xobject>
+<ID>project</ID>
+<x0>0</x0>
+<y0>0</y0>
+<width>200</width>
+<height>100</height>
+<ID_maker>68</ID_maker>
+<objectname>jrdp_client</objectname>
+<description>新規のアプリケーション</description>
+<プロパティ>
+<ID>properties</ID>
+<LookandFeel>javax.swing.plaf.metal.MetalLookAndFeel</LookandFeel>
+<MainWinx0>0</MainWinx0>
+<MainWiny0>0</MainWiny0>
+<MainWinWidth>1024</MainWinWidth>
+<MainWinHeight>740</MainWinHeight>
+<MesgWinx0>0</MesgWinx0>
+<MesgWiny0>0</MesgWiny0>
+<MesgWinWidth>1024</MesgWinWidth>
+<MesgWinHeight>740</MesgWinHeight>
+<FileWinx0>40</FileWinx0>
+<FileWiny0>448</FileWiny0>
+<FileWinWidth>578</FileWinWidth>
+<FileWinHeight>262</FileWinHeight>
+<EditWinx0>347</EditWinx0>
+<EditWiny0>0</EditWiny0>
+<EditWinWidth>676</EditWinWidth>
+<EditWinHeight>541</EditWinHeight>
+<PropWinx0>1</PropWinx0>
+<PropWiny0>1</PropWiny0>
+<PropWinWidth>615</PropWinWidth>
+<PropWinHeight>448</PropWinHeight>
+<DividerLocation1>2</DividerLocation1>
+<DividerLocation2>2</DividerLocation2>
+<ToolBarVisible>1</ToolBarVisible>
+<ViewSourceAtCompile>0</ViewSourceAtCompile>
+<NoSourceCreate>0</NoSourceCreate>
+<JavaEditCommand>geany</JavaEditCommand>
+<JavaViewCommand></JavaViewCommand>
+<HelpCommand></HelpCommand>
+<ApplicationType>4</ApplicationType>
+<CompileCommand0>./compile</CompileCommand0>
+<RunCommand0>./run</RunCommand0>
+<GUIDesignerCommand0>java -jar guidsin.jar -java</GUIDesignerCommand0>
+<ImportFiles0> import java.awt.*;
+ import java.awt.event.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+import java.awt.geom.*;
+import java.awt.print.*;
+import javax.swing.border.*;
+import javax.swing.filechooser.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+import java.awt.image.BufferedImage;
+import javax.sound.sampled.*;
+
+class Starter{
+  public static void main( String args[] ){
+    %AppName% ap = new %AppName%();
+    ap.ARGS = args;
+    ap.Start();
+  }
+}
+</ImportFiles0>
+<ProgramStartupCode0> String[] ARGS;
+</ProgramStartupCode0>
+<NativeHelpCommand0></NativeHelpCommand0>
+<CompileCommand1>./compile_applet</CompileCommand1>
+<RunCommand1>./run_applet</RunCommand1>
+<GUIDesignerCommand1>java -jar guidsin.jar -applet</GUIDesignerCommand1>
+<ImportFiles1> import java.awt.*;
+ import java.awt.event.*;
+ import java.applet.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+ public class javatext extends Applet {
+   %AppName% ap;
+   public void init() {
+     ap = new %AppName%();
+     ap.APPLET = this;
+     ap.Start();
+   }
+ }
+</ImportFiles1>
+<ProgramStartupCode1> Applet APPLET;
+</ProgramStartupCode1>
+<NativeHelpCommand1></NativeHelpCommand1>
+<CompileCommand2>./compile_cpp</CompileCommand2>
+<RunCommand2>./run_cpp</RunCommand2>
+<GUIDesignerCommand2></GUIDesignerCommand2>
+<ImportFiles2>#include &lt;stdio.h&gt;
+
+void Startup();
+</ImportFiles2>
+<ProgramStartupCode2>int main(){
+ Startup();
+ %AppName%::Start();
+ }
+</ProgramStartupCode2>
+<NativeHelpCommand2></NativeHelpCommand2>
+<CompileCommand3>./compile_cppw</CompileCommand3>
+<RunCommand3>./run_cppw</RunCommand3>
+<GUIDesignerCommand3>java -jar guidsin.jar -cpp</GUIDesignerCommand3>
+<ImportFiles3>#include &lt;stdio.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;math.h&gt;
+#include &quot;Ekagen.h&quot;
+void Startup();
+</ImportFiles3>
+<ProgramStartupCode3>void Emain(){
+Startup();
+%AppName%::Start();
+}
+</ProgramStartupCode3>
+<NativeHelpCommand3></NativeHelpCommand3>
+<MoveStep>8</MoveStep>
+<ImageEditCommand></ImageEditCommand>
+<CompilerFileName>javac.exe</CompilerFileName>
+<CompileCommand4>./compile_android2 Jrdp_client com example jrdp_client</CompileCommand4>
+<RunCommand4>echo no action</RunCommand4>
+<GUIDesignerCommand4>java -jar guidsin.jar -android</GUIDesignerCommand4>
+<ImportFiles4>package com.example.test;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.View;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.widget.Button;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+import android.widget.EditText;
+import android.text.SpannableStringBuilder;
+import android.text.TextWatcher;
+import android.text.Editable;
+import android.graphics.Matrix;
+import android.graphics.Typeface;
+import android.graphics.RectF;
+import android.graphics.BitmapFactory;
+import java.io.*;
+ import java.net.*;
+import java.util.*;
+import java.text.SimpleDateFormat;
+import android.media.MediaPlayer;
+import android.os.Handler;
+import android.content.res.Configuration;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.app.Activity;
+import android.graphics.Color;
+
+import android.widget.AbsoluteLayout;
+import android.widget.*;
+import android.view.Gravity;
+import android.view.View.OnClickListener;
+
+import android.hardware.Camera;
+import android.view.MotionEvent;
+import android.view.KeyEvent;
+import android.graphics.Rect;
+
+import java.util.ArrayList;
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
+
+public class HelloWorld extends Activity {
+  %AppName% ap = null;
+
+  @Override
+  public void onCreate(Bundle bundle) {
+    super.onCreate(bundle);
+    ap = new %AppName%();
+    ap.ACTIVITY = this;
+    ap.Start();
+  }
+
+   @Override
+    public void onDestroy(){
+      if( ap != null ) ap.disconnect();
+      super.onDestroy();
+    }
+
+}
+</ImportFiles4>
+<ProgramStartupCode4>Activity ACTIVITY;
+</ProgramStartupCode4>
+<NativeHelpCommand4>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    package=&quot;com.example.test&quot;
+    android:versionCode=&quot;1&quot;
+    android:versionName=&quot;1.0&quot; &gt;
+
+    
+    
+  &lt;uses-permission android:name=&quot;android.permission.CAMERA&quot; /&gt; 
+  &lt;uses-feature android:name=&quot;android.hardware.camera&quot; /&gt; 
+  &lt;uses-feature android:name=&quot;android.hardware.usb.host&quot; /&gt; 
+  &lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot;/&gt;
+  &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt; 
+  &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+
+  &lt;uses-sdk android:minSdkVersion=&quot;3&quot; android:targetSdkVersion=&quot;21&quot;/&gt;
+  
+ 
+    &lt;application android:label=&quot;@string/app_name&quot; &gt;
+        &lt;activity
+            android:name=&quot;HelloWorld&quot;
+            android:label=&quot;@string/app_name&quot; &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+
+                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;
+</NativeHelpCommand4>
+<HtmlEditCommand></HtmlEditCommand>
+<CompileCommand5></CompileCommand5>
+<RunCommand5>java -jar basic.jar test.bas</RunCommand5>
+<GUIDesignerCommand5></GUIDesignerCommand5>
+<ImportFiles5></ImportFiles5>
+<ProgramStartupCode5>gosub @_PSTART
+end
+</ProgramStartupCode5>
+<NativeHelpCommand5></NativeHelpCommand5>
+<NoOptimizePin>0</NoOptimizePin>
+<CompileCommand6>./compile_ai01</CompileCommand6>
+<RunCommand6>./run_ai01</RunCommand6>
+<GUIDesignerCommand6></GUIDesignerCommand6>
+<ImportFiles6>#include &lt;setjmp.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdarg.h&gt;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;math.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;arpa/inet.h&gt;
+#include &lt;netdb.h&gt;
+
+#include &lt;X11/Xlib.h&gt;
+#include &lt;X11/Xutil.h&gt;
+#include &lt;X11/Xlocale.h&gt; /* ロケール用ヘッダーファイル */
+#include &lt;X11/xpm.h&gt;
+#include &lt;sys/time.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;termios.h&gt;
+#include &lt;errno.h&gt;
+</ImportFiles6>
+<ProgramStartupCode6>int ARGC; char** ARGV;
+int main( int argc, char** argv ){
+  ARGC=argc;
+  ARGV=argv;
+  _PSTART();
+}
+</ProgramStartupCode6>
+<NativeHelpCommand6></NativeHelpCommand6>
+</プロパティ>
+<codeclip>
+<ID>_CSTART</ID>
+<x0>0</x0>
+<y0>5</y0>
+<width>133</width>
+<height>23</height>
+<codetext>Activity ACTIVITY;
+</codetext>
+</codeclip>
+<pin>
+<ID>_PSTART</ID>
+<x0>17</x0>
+<y0>38</y0>
+<width>55</width>
+<height>24</height>
+<text>Start()</text>
+<px>50</px>
+<py>50</py>
+</pin>
+<codeclip>
+<ID>_C0</ID>
+<x0>18</x0>
+<y0>201</y0>
+<width>250</width>
+<height>32</height>
+<codetext>// 通信スレッド
+class ClientThread extends Thread{
+
+  public void run() {
+    dprint(&quot;client thread start\n&quot;); 
+  
+    //接続・切断
+    try {
+      socket = new Socket(address,port);
+      in =  socket.getInputStream();
+      out = socket.getOutputStream();
+      outbuf[0]=(byte)(pass &amp; 0xff);
+      outbuf[1]=(byte)((pass&gt;&gt;8)  &amp; 0xff);
+      outbuf[2]=(byte)((pass&gt;&gt;16) &amp; 0xff);
+      outbuf[3]=(byte)((pass&gt;&gt;24) &amp; 0xff);
+      out.write(outbuf, 0, 4);
+    } catch (Exception e) {
+      dprint(&quot;error:&quot;+e+&quot;\nexit...\n&quot;);
+      disconnect();
+      System.exit(0);
+    }
+    is_running=true;
+    while(is_running){
+      try{
+        if( in.available() &gt; 0 ) update_screen();
+        else  Thread.sleep(5);
+      }
+      catch( Exception ie){}
+    }
+  } 
+}
+</codetext>
+</codeclip>
+<operation>
+<ID>_O3</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>315</x0>
+<y0>136</y0>
+<width>165</width>
+<height>48</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>29</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// 通信スレッドを起動
+
+
+save_ini();
+
+touch_x     = get_int(t_touch_x);
+touch_y     = get_int(t_touch_y);
+disp_x      = get_int(t_disp_x);
+disp_y      = get_int(t_disp_y);
+disp_width  = get_int(t_disp_width);
+disp_height = get_int(t_disp_height);
+address     = get_text(t_address);
+port        = get_int(t_port);
+pass        = get_int(t_pass);
+
+
+display = new Display(); // 画面を初期化
+new ClientThread().start();
+change_display(TERMINAL);
+</codetext>
+</operation>
+<codeclip>
+<ID>_C7</ID>
+<x0>545</x0>
+<y0>9</y0>
+<width>408</width>
+<height>483</height>
+<codetext>// 定数
+static final int TERMINAL = 0;
+static final int SETTING = 1;
+static final int KEY_EVENT_DOWN =1;
+static final int KEY_EVENT_UP = 2;
+static final int TOUCH_EVENT = 3;
+static final int EXIT_EVENT = 127;
+static final int SETTING_KEY = KeyEvent.KEYCODE_MENU;
+static final String INIFILE = &quot;/sdcard/jrdp_client.ini&quot;;
+
+// 設定項目
+int touch_x;       EditText t_touch_x;
+int touch_y;        EditText t_touch_y;
+int disp_x;          EditText t_disp_x;
+int disp_y;          EditText t_disp_y;
+int disp_width;   EditText t_disp_width;
+int disp_height;  EditText t_disp_height;
+String address;  EditText t_address;
+int port;             EditText t_port;
+int pass;            EditText t_pass;
+
+// 変数
+Socket socket = null;
+InputStream in;
+OutputStream out;
+byte[] outbuf = new byte[8];
+Bitmap bitmap;
+boolean is_running =false;
+AbsoluteLayout  l_setting; // 設定画面
+Button b_connect;
+
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C8</ID>
+<x0>294</x0>
+<y0>243</y0>
+<width>243</width>
+<height>32</height>
+<codetext>// 画面を更新する
+public void update_screen(){
+
+dprint(&quot;update screen\n&quot;);
+
+  try{
+    bitmap = BitmapFactory.decodeStream(in);
+dprint(&quot;bitmap=&quot;+bitmap+&quot;\n&quot;);
+    if( bitmap != null ){
+      display.draw(bitmap);
+      bitmap.recycle();
+      bitmap = null;
+    }
+  } catch (Exception e) {
+    dprint(&quot;update screen: &quot;+e+&quot;\n&quot;);
+    Runtime.getRuntime().gc();
+  }
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C9</ID>
+<x0>294</x0>
+<y0>203</y0>
+<width>174</width>
+<height>33</height>
+<codetext>// 切断する
+public void disconnect(){
+  is_running = false;
+
+dprint(&quot;disconnect:\nsocket=&quot;+socket+&quot;\n&quot;);
+
+  try{
+    if( socket != null ){
+      outbuf[0]=(byte)EXIT_EVENT;
+      out.write(outbuf, 0, 6);
+      socket.close();
+    }  
+  } catch(Exception e){}
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C10</ID>
+<x0>295</x0>
+<y0>322</y0>
+<width>216</width>
+<height>51</height>
+<codetext>// デバッグ用
+FileWriter dbg;
+boolean debug_mode = false;
+
+// デバッグオブジェクトを作成
+public void dinit(){
+  try{
+    if(debug_mode){
+      dbg = new FileWriter(&quot;/sdcard/debug.txt&quot;);
+      dprint(&quot;*** START DEBUG ***\n&quot;);
+   }
+  } catch(Exception e){}
+}
+
+public void dprint(String s){
+  if(debug_mode){
+    try{
+      dbg.write(s);
+      dbg.flush();
+    } catch(Exception e){}
+  }
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C12</ID>
+<x0>19</x0>
+<y0>241</y0>
+<width>238</width>
+<height>64</height>
+<codetext>// 表示画面
+Display display;
+SurfaceHolder holder;
+class Display extends SurfaceView implements SurfaceHolder.Callback{
+ Rect area;
+
+ Display(){
+ super(ACTIVITY);
+
+ dprint(&quot;new display\n&quot;);
+ 
+ setPadding(1, 1, 1, 1);
+ holder = getHolder();
+ holder.addCallback(this);
+ area = new Rect( disp_x, disp_y, disp_x+disp_width, disp_y+disp_height );
+
+setOnTouchListener( new View.OnTouchListener(){
+  @Override    
+  public boolean onTouch(View v, MotionEvent event) {
+
+    if (event.getAction() == MotionEvent.ACTION_UP) {
+
+dprint(&quot;touch event up\n&quot;);
+
+      int x = (int) (event.getRawX() - disp_x - touch_x) * 9999  / disp_width;    // 9999フルスケール
+      int y = (int) (event.getRawY() - disp_y - touch_y) * 9999  / disp_height;   // 9999フルスケール
+      outbuf[0]=(byte)TOUCH_EVENT;
+      outbuf[1]=(byte)(x &amp; 0xff);
+      outbuf[2]=(byte)((x&gt;&gt;8) &amp; 0xff);
+      outbuf[3]=(byte)(y &amp; 0xff);
+      outbuf[4]=(byte)((y&gt;&gt;8) &amp; 0xff);
+      try{
+         out.write(outbuf, 0, 5);
+      } catch(Exception e){}
+     }
+
+    return true;
+   }
+});
+
+setOnKeyListener( new View.OnKeyListener(){
+  @Override
+  public boolean onKey(View v, int keyCode, KeyEvent event) {
+
+    if (event.getAction() == KeyEvent.ACTION_DOWN) {
+
+dprint(&quot;key event action up\n&quot;);
+
+      if(keyCode == SETTING_KEY){
+        if(socket!=null) b_connect.setText(&quot;DISCONNECT&quot;);
+        change_display(0);
+      }
+      else{
+        outbuf[0]=(byte)KEY_EVENT_DOWN;
+        outbuf[1]=(byte)(keyCode&amp;0xff);
+        outbuf[2]=(byte)((keyCode&gt;&gt;8)&amp;0xff);
+        outbuf[3]=(byte)((keyCode&gt;&gt;16)&amp;0xff);
+        outbuf[4]=(byte)((keyCode&gt;&gt;24)&amp;0xff);
+        try{
+           out.write(outbuf, 0, 5);
+        } catch(Exception e){}
+      }
+      return true;
+    }
+
+    else if (event.getAction() == KeyEvent.ACTION_UP) {
+
+dprint(&quot;key event action up\n&quot;);
+
+      outbuf[0]=(byte)KEY_EVENT_UP;
+      outbuf[1]=(byte)(keyCode&amp;0xff);
+      outbuf[2]=(byte)((keyCode&gt;&gt;8)&amp;0xff);
+      outbuf[3]=(byte)((keyCode&gt;&gt;16)&amp;0xff);
+      outbuf[4]=(byte)((keyCode&gt;&gt;24)&amp;0xff);
+      try{
+         out.write(outbuf, 0, 5);
+      } catch(Exception e){}
+      return true;
+    }
+
+    return false;
+  }
+});
+
+}
+
+ @Override
+  public void surfaceCreated(SurfaceHolder arg0){
+    holder=arg0;
+  }
+
+  @Override
+  public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3){
+
+  }
+	
+  @Override
+  public void surfaceDestroyed(SurfaceHolder arg0){
+
+  }
+
+
+    // 実際に画面に表示する
+    public void draw(Bitmap bitmap){
+      if( holder != null){
+        Rect src = new Rect( 0, 0, bitmap.getWidth(), bitmap.getHeight() );
+        Canvas cv = holder.lockCanvas();
+        cv.drawBitmap( bitmap, src, area, null);
+        holder.unlockCanvasAndPost(cv);
+      }
+    }
+ }
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C14</ID>
+<x0>295</x0>
+<y0>279</y0>
+<width>228</width>
+<height>37</height>
+<codetext>// 表示画面の遷移
+public void change_display(int d){
+
+dprint(&quot;change display\n&quot;);
+
+switch(d){
+
+case TERMINAL:
+  ACTIVITY.setTitle(&quot;JVNC&quot;);
+  ACTIVITY.setContentView(display);
+  display.setFocusable(true);
+  display.setFocusableInTouchMode(true);
+  display.requestFocus();
+  break;
+
+case SETTING:
+  ACTIVITY.setContentView(l_setting);
+  ACTIVITY.setTitle(&quot;設定&quot;);
+  break;
+
+}
+
+
+
+}
+</codetext>
+</codeclip>
+<relation>
+<ID>_R43</ID>
+<pin1name>_X_G55(_P58)</pin1name>
+<pin2name>_O3</pin2name>
+</relation>
+<codeclip>
+<ID>_C44</ID>
+<x0>21</x0>
+<y0>426</y0>
+<width>194</width>
+<height>34</height>
+<codetext>// 初期化ファイルにセーブする
+public void save_ini(){
+try{
+  BufferedWriter dout = new BufferedWriter( new FileWriter( INIFILE ) );
+  dout.write(get_text(t_touch_x)+&quot;\n&quot;);
+  dout.write(get_text(t_touch_y)+&quot;\n&quot;);
+  dout.write(get_text(t_disp_x)+&quot;\n&quot;);
+  dout.write(get_text(t_disp_y)+&quot;\n&quot;);
+  dout.write(get_text(t_disp_width)+&quot;\n&quot;);
+  dout.write(get_text(t_disp_height)+&quot;\n&quot;);
+  dout.write(get_text(t_address)+&quot;\n&quot;);
+  dout.write(get_text(t_port)+&quot;\n&quot;);
+  dout.write(get_text(t_pass)+&quot;\n&quot;);
+  dout.close();
+} catch( Exception e ){}
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C45</ID>
+<x0>20</x0>
+<y0>386</y0>
+<width>213</width>
+<height>35</height>
+<codetext>// 初期化ファイルからロードする
+public void load_ini(){
+  String line;
+
+// 読み込む
+try{
+  BufferedReader din = new BufferedReader( new FileReader( INIFILE ) );
+  t_touch_x.setText(din.readLine());
+  t_touch_y.setText(din.readLine());
+  t_disp_x.setText(din.readLine());
+  t_disp_y.setText(din.readLine());
+  t_disp_width.setText(din.readLine());
+  t_disp_height.setText(din.readLine());
+  t_address.setText(din.readLine());
+  t_port.setText(din.readLine());
+  t_pass.setText(din.readLine());
+  din.close();
+} catch( Exception e ){}
+}
+</codetext>
+</codeclip>
+<operation>
+<ID>_O46</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>103</x0>
+<y0>30</y0>
+<width>114</width>
+<height>47</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>28</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>65</outpinx0>
+<outpiny0>27</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>//デバッグ初期化
+
+
+dinit(); 
+</codetext>
+</operation>
+<codeclip>
+<ID>_C48</ID>
+<x0>20</x0>
+<y0>310</y0>
+<width>268</width>
+<height>33</height>
+<codetext>  // EditTextから文字列を得る
+  public String get_text( EditText e ){
+    return ((SpannableStringBuilder)e.getText()).toString(); 
+  }
+
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C51</ID>
+<x0>20</x0>
+<y0>350</y0>
+<width>226</width>
+<height>32</height>
+<codetext>  // EditTextから数値を得る
+  public int get_int( EditText e ){
+    return Integer.parseInt( get_text(e) ); 
+  }
+
+</codetext>
+</codeclip>
+<xobject>
+<ID>_X_G55</ID>
+<x0>62</x0>
+<y0>100</y0>
+<width>176</width>
+<height>90</height>
+<objectname>setting</objectname>
+<description></description>
+<xobject>
+<ID>_X17</ID>
+<x0>435</x0>
+<y0>103</y0>
+<width>229</width>
+<height>270</height>
+<ID_maker>33</ID_maker>
+<objectname>variable_setter</objectname>
+<description></description>
+<pin>
+<ID>_P0</ID>
+<x0>327</x0>
+<y0>34</y0>
+<width>156</width>
+<height>30</height>
+<text>t_address_is(EditText t)</text>
+<px>3</px>
+<py>50</py>
+</pin>
+<pin>
+<ID>_P1</ID>
+<x0>361</x0>
+<y0>286</y0>
+<width>135</width>
+<height>29</height>
+<text>t_port_is(EditText t)</text>
+<px>0</px>
+<py>69</py>
+</pin>
+<pin>
+<ID>_P2</ID>
+<x0>336</x0>
+<y0>139</y0>
+<width>147</width>
+<height>28</height>
+<text>t_disp_x_is(EditText t)</text>
+<px>1</px>
+<py>89</py>
+</pin>
+<pin>
+<ID>_P3</ID>
+<x0>327</x0>
+<y0>81</y0>
+<width>143</width>
+<height>32</height>
+<text>t_disp_y_is(EditText t)</text>
+<px>0</px>
+<py>107</py>
+</pin>
+<pin>
+<ID>_P4</ID>
+<x0>349</x0>
+<y0>522</y0>
+<width>174</width>
+<height>25</height>
+<text>t_disp_width_is(EditText t)</text>
+<px>0</px>
+<py>142</py>
+</pin>
+<pin>
+<ID>_P5</ID>
+<x0>337</x0>
+<y0>454</y0>
+<width>182</width>
+<height>33</height>
+<text>t_disp_height_is(EditText t)</text>
+<px>5</px>
+<py>163</py>
+</pin>
+<pin>
+<ID>_P6</ID>
+<x0>353</x0>
+<y0>586</y0>
+<width>172</width>
+<height>29</height>
+<text>b_connect_is(Button b)</text>
+<px>8</px>
+<py>184</py>
+</pin>
+<pin>
+<ID>_P7</ID>
+<x0>349</x0>
+<y0>339</y0>
+<width>155</width>
+<height>32</height>
+<text>t_pass_is(EditText t)</text>
+<px>8</px>
+<py>206</py>
+</pin>
+<pin>
+<ID>_P8</ID>
+<x0>354</x0>
+<y0>388</y0>
+<width>162</width>
+<height>31</height>
+<text>t_touch_x_is(EditText t)</text>
+<px>7</px>
+<py>223</py>
+</pin>
+<pin>
+<ID>_P9</ID>
+<x0>332</x0>
+<y0>222</y0>
+<width>160</width>
+<height>28</height>
+<text>t_touch_y_is(EditText t)</text>
+<px>3</px>
+<py>242</py>
+</pin>
+<operation>
+<ID>_O10</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>603</x0>
+<y0>87</y0>
+<width>188</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(EditText t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>93</inpinwidth>
+<inpinheight>25</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>t_disp_y = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R11</ID>
+<pin1name>_P3</pin1name>
+<pin2name>_O10</pin2name>
+</relation>
+<operation>
+<ID>_O12</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>605</x0>
+<y0>153</y0>
+<width>188</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(EditText t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>93</inpinwidth>
+<inpinheight>25</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>t_disp_x = t;
+</codetext>
+</operation>
+<operation>
+<ID>_O13</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>613</x0>
+<y0>213</y0>
+<width>188</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(EditText t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>93</inpinwidth>
+<inpinheight>25</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>t_touch_y = t;
+</codetext>
+</operation>
+<operation>
+<ID>_O14</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>602</x0>
+<y0>274</y0>
+<width>188</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(EditText t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>93</inpinwidth>
+<inpinheight>25</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>t_port = t;
+</codetext>
+</operation>
+<operation>
+<ID>_O15</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>611</x0>
+<y0>19</y0>
+<width>188</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(EditText t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>93</inpinwidth>
+<inpinheight>25</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>t_address = t;
+</codetext>
+</operation>
+<operation>
+<ID>_O16</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>606</x0>
+<y0>333</y0>
+<width>188</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(EditText t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>93</inpinwidth>
+<inpinheight>25</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>t_pass = t;
+</codetext>
+</operation>
+<operation>
+<ID>_O17</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>605</x0>
+<y0>390</y0>
+<width>188</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(EditText t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>93</inpinwidth>
+<inpinheight>25</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>t_touch_x = t;
+</codetext>
+</operation>
+<operation>
+<ID>_O18</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>614</x0>
+<y0>447</y0>
+<width>188</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(EditText t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>93</inpinwidth>
+<inpinheight>25</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>t_disp_height= t;
+</codetext>
+</operation>
+<operation>
+<ID>_O19</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>614</x0>
+<y0>511</y0>
+<width>188</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(EditText t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>93</inpinwidth>
+<inpinheight>25</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>t_disp_width = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R20</ID>
+<pin1name>_P0</pin1name>
+<pin2name>_O15</pin2name>
+</relation>
+<relation>
+<ID>_R21</ID>
+<pin1name>_P2</pin1name>
+<pin2name>_O12</pin2name>
+</relation>
+<relation>
+<ID>_R22</ID>
+<pin1name>_P9</pin1name>
+<pin2name>_O13</pin2name>
+</relation>
+<relation>
+<ID>_R23</ID>
+<pin1name>_P1</pin1name>
+<pin2name>_O14</pin2name>
+</relation>
+<relation>
+<ID>_R24</ID>
+<pin1name>_P7</pin1name>
+<pin2name>_O16</pin2name>
+</relation>
+<relation>
+<ID>_R25</ID>
+<pin1name>_P8</pin1name>
+<pin2name>_O17</pin2name>
+</relation>
+<relation>
+<ID>_R26</ID>
+<pin1name>_P5</pin1name>
+<pin2name>_O18</pin2name>
+</relation>
+<relation>
+<ID>_R27</ID>
+<pin1name>_P4</pin1name>
+<pin2name>_O19</pin2name>
+</relation>
+<operation>
+<ID>_O28</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>613</x0>
+<y0>575</y0>
+<width>188</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(Button b)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>93</inpinwidth>
+<inpinheight>25</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>b_connect = b;
+</codetext>
+</operation>
+<relation>
+<ID>_R29</ID>
+<pin1name>_P6</pin1name>
+<pin2name>_O28</pin2name>
+</relation>
+<pin>
+<ID>_P30</ID>
+<x0>44</x0>
+<y0>299</y0>
+<width>192</width>
+<height>23</height>
+<text>l_setting_is(AbsoluteLayout l)</text>
+<px>0</px>
+<py>34</py>
+</pin>
+<operation>
+<ID>_O31</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>53</x0>
+<y0>206</y0>
+<width>151</width>
+<height>55</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(AbsoluteLayout l)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>31</inpiny0>
+<inpinwidth>134</inpinwidth>
+<inpinheight>25</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>l_setting=l;
+</codetext>
+</operation>
+<relation>
+<ID>_R32</ID>
+<pin1name>_P30</pin1name>
+<pin2name>_O31</pin2name>
+</relation>
+</xobject>
+<relation>
+<ID>_R49</ID>
+<pin1name>_A30(_PGUIout)</pin1name>
+<pin2name>_X17(_P30)</pin2name>
+</relation>
+<relation>
+<ID>_R41</ID>
+<pin1name>_A30(_Pt_touch_y)</pin1name>
+<pin2name>_X17(_P9)</pin2name>
+</relation>
+<relation>
+<ID>_R40</ID>
+<pin1name>_A30(_Pt_touch_x)</pin1name>
+<pin2name>_X17(_P8)</pin2name>
+</relation>
+<relation>
+<ID>_R39</ID>
+<pin1name>_A30(_Pt_pass)</pin1name>
+<pin2name>_X17(_P7)</pin2name>
+</relation>
+<relation>
+<ID>_R38</ID>
+<pin1name>_A30(_Pt_connect)</pin1name>
+<pin2name>_X17(_P6)</pin2name>
+</relation>
+<relation>
+<ID>_R36</ID>
+<pin1name>_A30(_Pt_disp_height)</pin1name>
+<pin2name>_X17(_P5)</pin2name>
+</relation>
+<relation>
+<ID>_R35</ID>
+<pin1name>_A30(_Pt_disp_width)</pin1name>
+<pin2name>_X17(_P4)</pin2name>
+</relation>
+<relation>
+<ID>_R34</ID>
+<pin1name>_A30(_Pt_disp_y)</pin1name>
+<pin2name>_X17(_P3)</pin2name>
+</relation>
+<relation>
+<ID>_R33</ID>
+<pin1name>_A30(_Pt_disp_x)</pin1name>
+<pin2name>_X17(_P2)</pin2name>
+</relation>
+<relation>
+<ID>_R32</ID>
+<pin1name>_A30(_Pt_port)</pin1name>
+<pin2name>_X17(_P1)</pin2name>
+</relation>
+<relation>
+<ID>_R31</ID>
+<pin1name>_A30(_Pt_address)</pin1name>
+<pin2name>_X17(_P0)</pin2name>
+</relation>
+<pin>
+<ID>_P58</ID>
+<text>connect()</text>
+<x0>235</x0>
+<y0>406</y0>
+<width>80</width>
+<height>24</height>
+<px>91</px>
+<py>53</py>
+</pin>
+<relation>
+<ID>_R59</ID>
+<pin1name>_A30(_PAt_connect)</pin1name>
+<pin2name>_P58</pin2name>
+</relation>
+<pin>
+<ID>_P60</ID>
+<text>start()</text>
+<x0>18</x0>
+<y0>31</y0>
+<width>80</width>
+<height>24</height>
+<px>103</px>
+<py>10</py>
+</pin>
+<relation>
+<ID>_R61</ID>
+<pin2name>_A30(_Pstart)</pin2name>
+<pin1name>_P60</pin1name>
+</relation>
+<ID_maker>64</ID_maker>
+<aobject>
+<ID>_A30</ID>
+<x0>100</x0>
+<y0>100</y0>
+<width>280</width>
+<objectname>GUI</objectname>
+<description>GUIオブジェクト
+</description>
+<state>
+<ID>_SINIT</ID>
+<x0>0</x0>
+<y0>40</y0>
+<width>70</width>
+<height>40</height>
+<text>  InitState</text>
+<isinitstate>1</isinitstate>
+</state>
+<pin>
+<ID>_Pstart</ID>
+<x0>400</x0>
+<y0>100</y0>
+<width>80</width>
+<height>26</height>
+<text>Start()</text>
+<px>0</px>
+<py>36</py>
+</pin>
+<pin>
+<ID>_PGUIout</ID>
+<x0>0</x0>
+<y0>84</y0>
+<width>180</width>
+<height>26</height>
+<text>GUI_created(AbsoluteLayout l)</text>
+<px>0</px>
+<py>54</py>
+</pin>
+<action>
+<ID>_Astart</ID>
+<comp1name>_Pstart</comp1name>
+<comp2name>_Ocreate</comp2name>
+</action>
+<operation>
+<ID>_Ocreate</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>220</x0>
+<y0>40</y0>
+<width>130</width>
+<height>64</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>30</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>30</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>90</inpinx0>
+<inpiny0>43</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// GUIを作成する
+XGUI x = new XGUI();
+
+</codetext>
+</operation>
+<pin>
+<ID>_Pt_address</ID>
+<x0>0</x0>
+<y0>110</y0>
+<width>200</width>
+<height>26</height>
+<text>t_address_created(EditText e)</text>
+<px>0</px>
+<py>72</py>
+</pin>
+<pin>
+<ID>_Pt_port</ID>
+<x0>0</x0>
+<y0>138</y0>
+<width>200</width>
+<height>26</height>
+<text>t_port_created(EditText e)</text>
+<px>0</px>
+<py>90</py>
+</pin>
+<pin>
+<ID>_Pt_disp_x</ID>
+<x0>0</x0>
+<y0>166</y0>
+<width>200</width>
+<height>26</height>
+<text>t_disp_x_created(EditText e)</text>
+<px>0</px>
+<py>108</py>
+</pin>
+<pin>
+<ID>_Pt_disp_y</ID>
+<x0>0</x0>
+<y0>194</y0>
+<width>200</width>
+<height>26</height>
+<text>t_disp_y_created(EditText e)</text>
+<px>0</px>
+<py>126</py>
+</pin>
+<pin>
+<ID>_Pt_disp_width</ID>
+<x0>0</x0>
+<y0>222</y0>
+<width>200</width>
+<height>26</height>
+<text>t_disp_width_created(EditText e)</text>
+<px>0</px>
+<py>144</py>
+</pin>
+<pin>
+<ID>_Pt_disp_height</ID>
+<x0>0</x0>
+<y0>250</y0>
+<width>200</width>
+<height>26</height>
+<text>t_disp_height_created(EditText e)</text>
+<px>0</px>
+<py>162</py>
+</pin>
+<pin>
+<ID>_Pt_connect</ID>
+<x0>0</x0>
+<y0>278</y0>
+<width>200</width>
+<height>26</height>
+<text>t_connect_created(Button b)</text>
+<px>0</px>
+<py>180</py>
+</pin>
+<pin>
+<ID>_PAt_connect</ID>
+<x0>0</x0>
+<y0>306</y0>
+<width>200</width>
+<height>26</height>
+<text>t_connect_clicked()</text>
+<px>0</px>
+<py>198</py>
+</pin>
+<pin>
+<ID>_Pt_pass</ID>
+<x0>0</x0>
+<y0>334</y0>
+<width>200</width>
+<height>26</height>
+<text>t_pass_created(EditText e)</text>
+<px>0</px>
+<py>216</py>
+</pin>
+<pin>
+<ID>_Pt_touch_x</ID>
+<x0>0</x0>
+<y0>362</y0>
+<width>200</width>
+<height>26</height>
+<text>t_touch_x_created(EditText e)</text>
+<px>0</px>
+<py>234</py>
+</pin>
+<pin>
+<ID>_Pt_touch_y</ID>
+<x0>0</x0>
+<y0>390</y0>
+<width>200</width>
+<height>26</height>
+<text>t_touch_y_created(EditText e)</text>
+<px>0</px>
+<py>252</py>
+</pin>
+<codeclip>
+<ID>_CXSTART</ID>
+<x0>0</x0>
+<y0>0</y0>
+<width>300</width>
+<height>26</height>
+<codetext> class XGUI{
+LABEL0 ILABEL0;
+ class LABEL0 extends TextView{
+ LABEL0(){
+ super(ACTIVITY);
+ setGravity(Gravity.LEFT|Gravity.TOP);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 204 ));
+ setText( &quot;ADRS:&quot; );
+}
+}
+t_address It_address;
+ class t_address extends EditText{
+ t_address(){
+ super(ACTIVITY);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 255 ));
+ setText( &quot;192.168.xxx.xxx&quot; );
+ t_address_created( this );
+}
+}
+LABEL2 ILABEL2;
+ class LABEL2 extends TextView{
+ LABEL2(){
+ super(ACTIVITY);
+ setGravity(Gravity.LEFT|Gravity.CENTER);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 204 ));
+ setText( &quot;PORT:&quot; );
+}
+}
+t_port It_port;
+ class t_port extends EditText{
+ t_port(){
+ super(ACTIVITY);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 255 ));
+ setText( &quot;5001&quot; );
+ t_port_created( this );
+}
+}
+LABEL4 ILABEL4;
+ class LABEL4 extends TextView{
+ LABEL4(){
+ super(ACTIVITY);
+ setGravity(Gravity.LEFT|Gravity.CENTER);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 204 ));
+ setText( &quot;DISPLAY&quot; );
+}
+}
+LABEL5 ILABEL5;
+ class LABEL5 extends TextView{
+ LABEL5(){
+ super(ACTIVITY);
+ setGravity(Gravity.LEFT|Gravity.CENTER);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 204 ));
+ setText( &quot;X:&quot; );
+}
+}
+t_disp_x It_disp_x;
+ class t_disp_x extends EditText{
+ t_disp_x(){
+ super(ACTIVITY);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 255 ));
+ setText( &quot;0&quot; );
+ t_disp_x_created( this );
+}
+}
+LABEL7 ILABEL7;
+ class LABEL7 extends TextView{
+ LABEL7(){
+ super(ACTIVITY);
+ setGravity(Gravity.LEFT|Gravity.CENTER);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 204 ));
+ setText( &quot;Y:&quot; );
+}
+}
+t_disp_y It_disp_y;
+ class t_disp_y extends EditText{
+ t_disp_y(){
+ super(ACTIVITY);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 255 ));
+ setText( &quot;0&quot; );
+ t_disp_y_created( this );
+}
+}
+LABEL9 ILABEL9;
+ class LABEL9 extends TextView{
+ LABEL9(){
+ super(ACTIVITY);
+ setGravity(Gravity.LEFT|Gravity.CENTER);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 204 ));
+ setText( &quot;WIDTH:&quot; );
+}
+}
+t_disp_width It_disp_width;
+ class t_disp_width extends EditText{
+ t_disp_width(){
+ super(ACTIVITY);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 255 ));
+ setText( &quot;640&quot; );
+ t_disp_width_created( this );
+}
+}
+LABEL11 ILABEL11;
+ class LABEL11 extends TextView{
+ LABEL11(){
+ super(ACTIVITY);
+ setGravity(Gravity.LEFT|Gravity.CENTER);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 204 ));
+ setText( &quot;HEIGHT:&quot; );
+}
+}
+t_disp_height It_disp_height;
+ class t_disp_height extends EditText{
+ t_disp_height(){
+ super(ACTIVITY);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 255 ));
+ setText( &quot;360&quot; );
+ t_disp_height_created( this );
+}
+}
+t_connect It_connect;
+ class t_connect extends Button{
+ t_connect(){
+ super(ACTIVITY);
+ setGravity(Gravity.CENTER|Gravity.CENTER);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 192, 192, 192 ));
+ setText( &quot;CONNECT&quot; );
+ setOnClickListener(new Button.OnClickListener(){ public void onClick(View v) {t_connect_clicked();}} );
+ t_connect_created( this );
+}
+}
+LABEL16 ILABEL16;
+ class LABEL16 extends TextView{
+ LABEL16(){
+ super(ACTIVITY);
+ setGravity(Gravity.LEFT|Gravity.CENTER);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 204 ));
+ setText( &quot;PASS CODE:&quot; );
+}
+}
+t_pass It_pass;
+ class t_pass extends EditText{
+ t_pass(){
+ super(ACTIVITY);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 255 ));
+ setText( &quot;12345678&quot; );
+ t_pass_created( this );
+}
+}
+LABEL18 ILABEL18;
+ class LABEL18 extends TextView{
+ LABEL18(){
+ super(ACTIVITY);
+ setGravity(Gravity.LEFT|Gravity.CENTER);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 204 ));
+ setText( &quot;TOUCH OFFSET&quot; );
+}
+}
+t_touch_x It_touch_x;
+ class t_touch_x extends EditText{
+ t_touch_x(){
+ super(ACTIVITY);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 255 ));
+ setText( &quot;0&quot; );
+ t_touch_x_created( this );
+}
+}
+LABEL20 ILABEL20;
+ class LABEL20 extends TextView{
+ LABEL20(){
+ super(ACTIVITY);
+ setGravity(Gravity.LEFT|Gravity.CENTER);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 204 ));
+ setText( &quot;X:&quot; );
+}
+}
+LABEL21 ILABEL21;
+ class LABEL21 extends TextView{
+ LABEL21(){
+ super(ACTIVITY);
+ setGravity(Gravity.LEFT|Gravity.CENTER);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 204 ));
+ setText( &quot;Y:&quot; );
+}
+}
+t_touch_y It_touch_y;
+ class t_touch_y extends EditText{
+ t_touch_y(){
+ super(ACTIVITY);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 255, 255, 255 ));
+ setText( &quot;80&quot; );
+ t_touch_y_created( this );
+}
+}
+ XGUI(){
+ AbsoluteLayout layout=new AbsoluteLayout(ACTIVITY);
+layout.setBackgroundColor(Color.rgb( 255, 255, 204));
+ACTIVITY.setContentView(layout);
+ACTIVITY.setTitle(&quot;Setting&quot;);
+ ILABEL0 = new LABEL0();
+ ILABEL0.setLayoutParams( new AbsoluteLayout.LayoutParams( 73,22,8,2 ) );
+ layout.addView( ILABEL0 );
+ It_address = new t_address();
+ It_address.setLayoutParams( new AbsoluteLayout.LayoutParams( 214,28,85,2 ) );
+ layout.addView( It_address );
+ ILABEL2 = new LABEL2();
+ ILABEL2.setLayoutParams( new AbsoluteLayout.LayoutParams( 64,27,10,32 ) );
+ layout.addView( ILABEL2 );
+ It_port = new t_port();
+ It_port.setLayoutParams( new AbsoluteLayout.LayoutParams( 61,28,85,32 ) );
+ layout.addView( It_port );
+ ILABEL4 = new LABEL4();
+ ILABEL4.setLayoutParams( new AbsoluteLayout.LayoutParams( 98,24,1,63 ) );
+ layout.addView( ILABEL4 );
+ ILABEL5 = new LABEL5();
+ ILABEL5.setLayoutParams( new AbsoluteLayout.LayoutParams( 30,33,4,88 ) );
+ layout.addView( ILABEL5 );
+ It_disp_x = new t_disp_x();
+ It_disp_x.setLayoutParams( new AbsoluteLayout.LayoutParams( 46,26,23,91 ) );
+ layout.addView( It_disp_x );
+ ILABEL7 = new LABEL7();
+ ILABEL7.setLayoutParams( new AbsoluteLayout.LayoutParams( 21,34,79,89 ) );
+ layout.addView( ILABEL7 );
+ It_disp_y = new t_disp_y();
+ It_disp_y.setLayoutParams( new AbsoluteLayout.LayoutParams( 45,27,99,91 ) );
+ layout.addView( It_disp_y );
+ ILABEL9 = new LABEL9();
+ ILABEL9.setLayoutParams( new AbsoluteLayout.LayoutParams( 92,30,3,123 ) );
+ layout.addView( ILABEL9 );
+ It_disp_width = new t_disp_width();
+ It_disp_width.setLayoutParams( new AbsoluteLayout.LayoutParams( 80,28,103,124 ) );
+ layout.addView( It_disp_width );
+ ILABEL11 = new LABEL11();
+ ILABEL11.setLayoutParams( new AbsoluteLayout.LayoutParams( 95,32,2,154 ) );
+ layout.addView( ILABEL11 );
+ It_disp_height = new t_disp_height();
+ It_disp_height.setLayoutParams( new AbsoluteLayout.LayoutParams( 81,31,103,157 ) );
+ layout.addView( It_disp_height );
+ It_connect = new t_connect();
+ It_connect.setLayoutParams( new AbsoluteLayout.LayoutParams( 138,46,2,336 ) );
+ layout.addView( It_connect );
+ ILABEL16 = new LABEL16();
+ ILABEL16.setLayoutParams( new AbsoluteLayout.LayoutParams( 138,29,4,275 ) );
+ layout.addView( ILABEL16 );
+ It_pass = new t_pass();
+ It_pass.setLayoutParams( new AbsoluteLayout.LayoutParams( 140,35,2,298 ) );
+ layout.addView( It_pass );
+ ILABEL18 = new LABEL18();
+ ILABEL18.setLayoutParams( new AbsoluteLayout.LayoutParams( 166,31,6,188 ) );
+ layout.addView( ILABEL18 );
+ It_touch_x = new t_touch_x();
+ It_touch_x.setLayoutParams( new AbsoluteLayout.LayoutParams( 59,28,34,214 ) );
+ layout.addView( It_touch_x );
+ ILABEL20 = new LABEL20();
+ ILABEL20.setLayoutParams( new AbsoluteLayout.LayoutParams( 24,36,6,213 ) );
+ layout.addView( ILABEL20 );
+ ILABEL21 = new LABEL21();
+ ILABEL21.setLayoutParams( new AbsoluteLayout.LayoutParams( 25,35,5,242 ) );
+ layout.addView( ILABEL21 );
+ It_touch_y = new t_touch_y();
+ It_touch_y.setLayoutParams( new AbsoluteLayout.LayoutParams( 57,28,34,244 ) );
+ layout.addView( It_touch_y );
+ GUI_created( layout );
+}
+}
+</codetext>
+</codeclip>
+<ID_maker>31</ID_maker>
+<height>274</height>
+<レイアウト>Setting
+330
+507
+255
+255
+204
+xxscale=1
+LABEL;LABEL0;ADRS:;8;2;73;22;51;51;51;255;255;204;Dialog;12;null;2;1;1;0;0;TextView;
+TEXTFIELD;t_address;192.168.xxx.xxx;85;2;214;28;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
+LABEL;LABEL2;PORT:;10;32;64;27;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
+TEXTFIELD;t_port;5001;85;32;61;28;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
+LABEL;LABEL4;DISPLAY;1;63;98;24;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
+LABEL;LABEL5;X:;4;88;30;33;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
+TEXTFIELD;t_disp_x;0;23;91;46;26;51;51;51;255;255;255;Dialog;12;1;1;1;EditText;
+LABEL;LABEL7;Y:;79;89;21;34;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
+TEXTFIELD;t_disp_y;0;99;91;45;27;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
+LABEL;LABEL9;WIDTH:;3;123;92;30;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
+TEXTFIELD;t_disp_width;640;103;124;80;28;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
+LABEL;LABEL11;HEIGHT:;2;154;95;32;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
+TEXTFIELD;t_disp_height;360;103;157;81;31;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
+BUTTON;t_connect;CONNECT;2;336;138;46;51;51;51;192;192;192;Dialog;12;null;0;0;1;1;1;Button;
+LABEL;LABEL16;PASS CODE:;4;275;138;29;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
+TEXTFIELD;t_pass;12345678;2;298;140;35;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
+LABEL;LABEL18;TOUCH OFFSET;6;188;166;31;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
+TEXTFIELD;t_touch_x;0;34;214;59;28;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
+LABEL;LABEL20;X:;6;213;24;36;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
+LABEL;LABEL21;Y:;5;242;25;35;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
+TEXTFIELD;t_touch_y;80;34;244;57;28;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
+</レイアウト>
+</aobject>
+</xobject>
+<operation>
+<ID>_O63</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>312</x0>
+<y0>78</y0>
+<width>114</width>
+<height>47</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>28</inpiny0>
+<inpinwidth>30</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// 初期化
+
+
+load_ini(); // 初期化ファイルを読み込む
+change_display(SETTING);
+</codetext>
+</operation>
+<relation>
+<ID>_R64</ID>
+<pin1name>_PSTART</pin1name>
+<pin2name>_O46</pin2name>
+</relation>
+<relation>
+<ID>_R65</ID>
+<pin1name>_O46</pin1name>
+<pin2name>_X_G55(_P60)</pin2name>
+</relation>
+<relation>
+<ID>_R67</ID>
+<pin1name>_X_G55(_P60)</pin1name>
+<pin2name>_O63</pin2name>
+</relation>
+</xobject>
