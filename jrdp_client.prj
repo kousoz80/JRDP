@@ -818,8 +818,8 @@ dinit();
 <description></description>
 <xobject>
 <ID>_X17</ID>
-<x0>579</x0>
-<y0>87</y0>
+<x0>479</x0>
+<y0>104</y0>
 <width>224</width>
 <height>333</height>
 <ID_maker>42</ID_maker>
@@ -1467,8 +1467,8 @@ dinit();
 <pin>
 <ID>_P58</ID>
 <text>connect()</text>
-<x0>88</x0>
-<y0>271</y0>
+<x0>157</x0>
+<y0>508</y0>
 <width>80</width>
 <height>24</height>
 <px>91</px>
@@ -1477,8 +1477,8 @@ dinit();
 <pin>
 <ID>_P60</ID>
 <text>start()</text>
-<x0>162</x0>
-<y0>15</y0>
+<x0>16</x0>
+<y0>58</y0>
 <width>80</width>
 <height>24</height>
 <px>103</px>
@@ -1505,10 +1505,15 @@ dinit();
 <pin1name>_A30(_Pt_interval)</pin1name>
 <pin2name>_X17(_P36)</pin2name>
 </relation>
+<relation>
+<ID>_R67</ID>
+<pin1name>_A30(_Pc_usebuffer)</pin1name>
+<pin2name>_X17(_P39)</pin2name>
+</relation>
 <aobject>
 <ID>_A30</ID>
-<x0>244</x0>
-<y0>84</y0>
+<x0>100</x0>
+<y0>100</y0>
 <width>280</width>
 <objectname>GUI</objectname>
 <description>GUIオブジェクト
@@ -2113,10 +2118,10 @@ ACTIVITY.setTitle(&quot;Setting&quot;);
  It_interval.setLayoutParams( new AbsoluteLayout.LayoutParams( 153,41,236,276 ) );
  layout.addView( It_interval );
  ILABEL25 = new LABEL25();
- ILABEL25.setLayoutParams( new AbsoluteLayout.LayoutParams( 273,45,68,322 ) );
+ ILABEL25.setLayoutParams( new AbsoluteLayout.LayoutParams( 217,44,84,323 ) );
  layout.addView( ILABEL25 );
  Ic_usebuffer = new c_usebuffer();
- Ic_usebuffer.setLayoutParams( new AbsoluteLayout.LayoutParams( 28,35,22,327 ) );
+ Ic_usebuffer.setLayoutParams( new AbsoluteLayout.LayoutParams( 55,53,23,318 ) );
  layout.addView( Ic_usebuffer );
  GUI_created( layout );
 }
@@ -2157,15 +2162,10 @@ LABEL;LABEL22;SCALE;11;156;76;24;51;51;51;247;252;201;Dialog;12;null;0;0;1;0;0;T
 TEXTFIELD;t_scale;2;92;157;47;25;51;51;51;255;255;255;Dialog;12;1;1;1;EditText;
 LABEL;LABEL23;INTERVAL;3;217;167;31;51;51;51;253;253;177;Dialog;12;null;0;0;1;0;1;TextView;
 TEXTFIELD;t_interval;100;182;213;118;32;51;51;51;255;255;255;Dialog;12;1;1;1;EditText;
-LABEL;LABEL25;USE BUFFETR;53;248;210;35;51;51;51;253;253;177;Dialog;12;null;2;0;1;0;0;TextView;
-CHECKBOX;c_usebuffer;1;17;252;22;27;51;51;51;238;238;238;1;1;0;CheckBox;
+LABEL;LABEL25;USE BUFFETR;65;249;167;34;51;51;51;253;253;177;Dialog;12;null;2;0;1;0;0;TextView;
+CHECKBOX;c_usebuffer;1;18;245;43;41;51;51;51;238;238;238;1;1;0;CheckBox;
 </レイアウト>
 </aobject>
-<relation>
-<ID>_R67</ID>
-<pin1name>_A30(_Pc_usebuffer)</pin1name>
-<pin2name>_X17(_P39)</pin2name>
-</relation>
 </xobject>
 <operation>
 <ID>_O63</ID>
