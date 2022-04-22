@@ -415,7 +415,7 @@ static final int KEY_EVENT_UP = 2;
 static final int TOUCH_EVENT = 3;
 static final int EXIT_EVENT = 127;
 static final int SETTING_KEY = KeyEvent.KEYCODE_MENU;
-static final String INIFILE = &quot;/sdcard/jrdp_client2.ini&quot;;
+static final String INIFILE = &quot;/sdcard/jrdp_client.ini&quot;;
 
 // 設定項目
 int touch_x;       EditText t_touch_x;
