@@ -391,6 +391,7 @@ port        = get_int(t_port);
 pass        = get_int(t_pass);
 scale       = get_int(t_scale);
 interval    = get_int(t_interval);
+use_buffer  = c_usebuffer.isChecked();
 
 opt.inPurgeable = true;
 opt.inDither = false;
@@ -403,9 +404,9 @@ change_display(TERMINAL);
 </operation>
 <codeclip>
 <ID>_C7</ID>
-<x0>535</x0>
-<y0>34</y0>
-<width>416</width>
+<x0>538</x0>
+<y0>7</y0>
+<width>421</width>
 <height>564</height>
 <codetext>// 定数
 static final int TERMINAL = 0;
@@ -416,6 +417,7 @@ static final int TOUCH_EVENT = 3;
 static final int EXIT_EVENT = 127;
 static final int SETTING_KEY = KeyEvent.KEYCODE_MENU;
 static final String INIFILE = &quot;/sdcard/jrdp_client.ini&quot;;
+static final int BUFFER_SIZE = 500000;
 
 // 設定項目
 int touch_x;       EditText t_touch_x;
@@ -429,6 +431,7 @@ int port;             EditText t_port;
 int pass;            EditText t_pass;
 int scale;           EditText t_scale;
 int interval;        EditText t_interval;
+boolean use_buffer; CheckBox c_usebuffer;
 
 // 変数
 Socket socket = null;
@@ -441,9 +444,7 @@ AbsoluteLayout  l_setting; // 設定画面
 Button b_connect;
 
 BitmapFactory.Options opt = new BitmapFactory.Options();
-String img_path = &quot;/sdcard/img_file.jpg&quot;;
-File img_file = new File(img_path);
-byte[] img_buf = new byte[500000];
+byte[] img_buf = new byte[BUFFER_SIZE];//イメージバッファ
 </codetext>
 </codeclip>
 <codeclip>
@@ -454,18 +455,21 @@ byte[] img_buf = new byte[500000];
 <height>32</height>
 <codetext>// 画面を更新する
 public void update_screen(){
-  int size = -1;
 
 dprint(&quot;update screen\n&quot;);
 
 try{
-       Thread.sleep(interval);
 
-dprint(&quot;image size=&quot;+size+&quot;\n&quot;);
+       if(use_buffer){
+         int size = 0;
+         Thread.sleep(interval);
+         in.read(img_buf,0,size = in.available());
+         bitmap = BitmapFactory.decodeByteArray(img_buf, 0, size);
+       }
+       else{
+         bitmap = BitmapFactory.decodeStream(in);
+       }
 
-       in.read(img_buf,0,size = in.available());
-
-       bitmap = BitmapFactory.decodeByteArray(img_buf, 0, size);
        if( bitmap != null ){
          display.draw(bitmap);
          bitmap.recycle();
@@ -709,6 +713,7 @@ try{
   dout.write(get_text(t_pass)+&quot;\n&quot;);
   dout.write(get_text(t_scale)+&quot;\n&quot;);
   dout.write(get_text(t_interval)+&quot;\n&quot;);
+  dout.write((c_usebuffer.isChecked()?1:0)+&quot;\n&quot;);
   dout.close();
 } catch( Exception e ){}
 }
@@ -741,6 +746,7 @@ try{
   t_pass.setText(din.readLine());
   t_scale.setText(din.readLine());
   t_interval.setText(din.readLine());
+  c_usebuffer.setChecked(&quot;1&quot;.equals(din.readLine()));
   din.close();
 } catch( Exception e ){}
 }
@@ -812,11 +818,11 @@ dinit();
 <description></description>
 <xobject>
 <ID>_X17</ID>
-<x0>435</x0>
-<y0>103</y0>
-<width>217</width>
-<height>315</height>
-<ID_maker>39</ID_maker>
+<x0>579</x0>
+<y0>87</y0>
+<width>224</width>
+<height>333</height>
+<ID_maker>42</ID_maker>
 <objectname>variable_setter</objectname>
 <description></description>
 <pin>
@@ -1365,6 +1371,48 @@ dinit();
 <pin1name>_P36</pin1name>
 <pin2name>_O37</pin2name>
 </relation>
+<pin>
+<ID>_P39</ID>
+<x0>21</x0>
+<y0>398</y0>
+<width>183</width>
+<height>27</height>
+<text>c_usebuffer_is(CheckBox c)</text>
+<px>0</px>
+<py>303</py>
+</pin>
+<operation>
+<ID>_O40</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>245</x0>
+<y0>393</y0>
+<width>144</width>
+<height>52</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(CheckBox c)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>93</inpinwidth>
+<inpinheight>25</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>c_usebuffer=c;
+</codetext>
+</operation>
+<relation>
+<ID>_R41</ID>
+<pin1name>_P39</pin1name>
+<pin2name>_O40</pin2name>
+</relation>
 </xobject>
 <relation>
 <ID>_R49</ID>
@@ -1419,8 +1467,8 @@ dinit();
 <pin>
 <ID>_P58</ID>
 <text>connect()</text>
-<x0>212</x0>
-<y0>462</y0>
+<x0>88</x0>
+<y0>271</y0>
 <width>80</width>
 <height>24</height>
 <px>91</px>
@@ -1429,8 +1477,8 @@ dinit();
 <pin>
 <ID>_P60</ID>
 <text>start()</text>
-<x0>18</x0>
-<y0>31</y0>
+<x0>162</x0>
+<y0>15</y0>
 <width>80</width>
 <height>24</height>
 <px>103</px>
@@ -1441,16 +1489,26 @@ dinit();
 <pin2name>_A30(_Pstart)</pin2name>
 <pin1name>_P60</pin1name>
 </relation>
-<ID_maker>67</ID_maker>
+<ID_maker>68</ID_maker>
 <relation>
 <ID>_R64</ID>
 <pin1name>_A30(_Pt_scale)</pin1name>
 <pin2name>_X17(_P34)</pin2name>
 </relation>
+<relation>
+<ID>_R65</ID>
+<pin1name>_A30(_PAb_connect)</pin1name>
+<pin2name>_P58</pin2name>
+</relation>
+<relation>
+<ID>_R66</ID>
+<pin1name>_A30(_Pt_interval)</pin1name>
+<pin2name>_X17(_P36)</pin2name>
+</relation>
 <aobject>
 <ID>_A30</ID>
-<x0>100</x0>
-<y0>100</y0>
+<x0>244</x0>
+<y0>84</y0>
 <width>280</width>
 <objectname>GUI</objectname>
 <description>GUIオブジェクト
@@ -1658,6 +1716,16 @@ XGUI x = new XGUI();
 <px>0</px>
 <py>306</py>
 </pin>
+<pin>
+<ID>_Pc_usebuffer</ID>
+<x0>0</x0>
+<y0>502</y0>
+<width>200</width>
+<height>26</height>
+<text>c_usebuffer_created(CheckBox c)</text>
+<px>0</px>
+<py>324</py>
+</pin>
 <codeclip>
 <ID>_CXSTART</ID>
 <x0>0</x0>
@@ -1669,7 +1737,7 @@ LABEL0 ILABEL0;
  class LABEL0 extends TextView{
  LABEL0(){
  super(ACTIVITY);
- setGravity(Gravity.LEFT|Gravity.TOP);
+ setGravity(Gravity.CENTER|Gravity.CENTER);
  setPadding(1, 1, 1, 1);
  setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
  setBackgroundColor( Color.rgb( 255, 255, 204 ));
@@ -1691,7 +1759,7 @@ LABEL2 ILABEL2;
  class LABEL2 extends TextView{
  LABEL2(){
  super(ACTIVITY);
- setGravity(Gravity.LEFT|Gravity.CENTER);
+ setGravity(Gravity.CENTER|Gravity.CENTER);
  setPadding(1, 1, 1, 1);
  setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
  setBackgroundColor( Color.rgb( 255, 255, 204 ));
@@ -1713,7 +1781,7 @@ LABEL4 ILABEL4;
  class LABEL4 extends TextView{
  LABEL4(){
  super(ACTIVITY);
- setGravity(Gravity.LEFT|Gravity.CENTER);
+ setGravity(Gravity.CENTER|Gravity.CENTER);
  setPadding(1, 1, 1, 1);
  setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
  setBackgroundColor( Color.rgb( 255, 255, 204 ));
@@ -1768,7 +1836,7 @@ LABEL9 ILABEL9;
  class LABEL9 extends TextView{
  LABEL9(){
  super(ACTIVITY);
- setGravity(Gravity.LEFT|Gravity.CENTER);
+ setGravity(Gravity.CENTER|Gravity.CENTER);
  setPadding(1, 1, 1, 1);
  setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
  setBackgroundColor( Color.rgb( 255, 255, 204 ));
@@ -1825,7 +1893,7 @@ LABEL16 ILABEL16;
  class LABEL16 extends TextView{
  LABEL16(){
  super(ACTIVITY);
- setGravity(Gravity.LEFT|Gravity.CENTER);
+ setGravity(Gravity.CENTER|Gravity.CENTER);
  setPadding(1, 1, 1, 1);
  setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
  setBackgroundColor( Color.rgb( 255, 255, 204 ));
@@ -1847,11 +1915,11 @@ LABEL18 ILABEL18;
  class LABEL18 extends TextView{
  LABEL18(){
  super(ACTIVITY);
- setGravity(Gravity.LEFT|Gravity.CENTER);
+ setGravity(Gravity.CENTER|Gravity.CENTER);
  setPadding(1, 1, 1, 1);
  setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
  setBackgroundColor( Color.rgb( 255, 255, 204 ));
- setText( &quot;TOUCH OFFSET&quot; );
+ setText( &quot;OFFSET&quot; );
 }
 }
 t_touch_x It_touch_x;
@@ -1902,7 +1970,7 @@ LABEL22 ILABEL22;
  class LABEL22 extends TextView{
  LABEL22(){
  super(ACTIVITY);
- setGravity(Gravity.LEFT|Gravity.CENTER);
+ setGravity(Gravity.CENTER|Gravity.CENTER);
  setPadding(1, 1, 1, 1);
  setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
  setBackgroundColor( Color.rgb( 247, 252, 201 ));
@@ -1916,7 +1984,7 @@ t_scale It_scale;
  setPadding(1, 1, 1, 1);
  setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
  setBackgroundColor( Color.rgb( 255, 255, 255 ));
- setText( &quot;0&quot; );
+ setText( &quot;2&quot; );
  t_scale_created( this );
 }
 }
@@ -1924,11 +1992,11 @@ LABEL23 ILABEL23;
  class LABEL23 extends TextView{
  LABEL23(){
  super(ACTIVITY);
- setGravity(Gravity.LEFT|Gravity.CENTER);
+ setGravity(Gravity.CENTER|Gravity.CENTER);
  setPadding(1, 1, 1, 1);
  setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
- setBackgroundColor( Color.rgb( 192, 192, 192 ));
- setText( &quot;UPDATE INTERVAL&quot; );
+ setBackgroundColor( Color.rgb( 253, 253, 177 ));
+ setText( &quot;INTERVAL&quot; );
 }
  protected void onDraw(Canvas g){ super.onDraw( g ); LABEL23_paint(g); }
 }
@@ -1943,13 +2011,34 @@ t_interval It_interval;
  t_interval_created( this );
 }
 }
+LABEL25 ILABEL25;
+ class LABEL25 extends TextView{
+ LABEL25(){
+ super(ACTIVITY);
+ setGravity(Gravity.LEFT|Gravity.CENTER);
+ setPadding(1, 1, 1, 1);
+ setTextSize( 12f ); setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 253, 253, 177 ));
+ setText( &quot;USE BUFFETR&quot; );
+}
+}
+c_usebuffer Ic_usebuffer;
+ class c_usebuffer extends CheckBox{
+ c_usebuffer(){
+ super(ACTIVITY);
+ setPadding(1, 1, 1, 1);
+ setTextColor( Color.rgb( 51, 51, 51 ));
+ setBackgroundColor( Color.rgb( 238, 238, 238 ));
+ c_usebuffer_created( this );
+}
+}
  XGUI(){
  AbsoluteLayout layout=new AbsoluteLayout(ACTIVITY);
 layout.setBackgroundColor(Color.rgb( 255, 255, 204));
 ACTIVITY.setContentView(layout);
 ACTIVITY.setTitle(&quot;Setting&quot;);
  ILABEL0 = new LABEL0();
- ILABEL0.setLayoutParams( new AbsoluteLayout.LayoutParams( 94,28,10,2 ) );
+ ILABEL0.setLayoutParams( new AbsoluteLayout.LayoutParams( 94,28,5,6 ) );
  layout.addView( ILABEL0 );
  It_address = new t_address();
  It_address.setLayoutParams( new AbsoluteLayout.LayoutParams( 278,36,110,2 ) );
@@ -1988,48 +2077,54 @@ ACTIVITY.setTitle(&quot;Setting&quot;);
  It_disp_height.setLayoutParams( new AbsoluteLayout.LayoutParams( 76,36,315,118 ) );
  layout.addView( It_disp_height );
  Ib_connect = new b_connect();
- Ib_connect.setLayoutParams( new AbsoluteLayout.LayoutParams( 179,59,118,366 ) );
+ Ib_connect.setLayoutParams( new AbsoluteLayout.LayoutParams( 179,59,93,375 ) );
  layout.addView( Ib_connect );
  ILABEL16 = new LABEL16();
- ILABEL16.setLayoutParams( new AbsoluteLayout.LayoutParams( 149,35,9,253 ) );
+ ILABEL16.setLayoutParams( new AbsoluteLayout.LayoutParams( 149,35,10,243 ) );
  layout.addView( ILABEL16 );
  It_pass = new t_pass();
- It_pass.setLayoutParams( new AbsoluteLayout.LayoutParams( 202,44,183,241 ) );
+ It_pass.setLayoutParams( new AbsoluteLayout.LayoutParams( 202,44,187,228 ) );
  layout.addView( It_pass );
  ILABEL18 = new LABEL18();
- ILABEL18.setLayoutParams( new AbsoluteLayout.LayoutParams( 133,26,6,166 ) );
+ ILABEL18.setLayoutParams( new AbsoluteLayout.LayoutParams( 136,27,0,163 ) );
  layout.addView( ILABEL18 );
  It_touch_x = new t_touch_x();
- It_touch_x.setLayoutParams( new AbsoluteLayout.LayoutParams( 76,36,191,165 ) );
+ It_touch_x.setLayoutParams( new AbsoluteLayout.LayoutParams( 76,36,189,157 ) );
  layout.addView( It_touch_x );
  ILABEL20 = new LABEL20();
- ILABEL20.setLayoutParams( new AbsoluteLayout.LayoutParams( 23,31,158,166 ) );
+ ILABEL20.setLayoutParams( new AbsoluteLayout.LayoutParams( 23,31,158,158 ) );
  layout.addView( ILABEL20 );
  ILABEL21 = new LABEL21();
- ILABEL21.setLayoutParams( new AbsoluteLayout.LayoutParams( 22,37,275,167 ) );
+ ILABEL21.setLayoutParams( new AbsoluteLayout.LayoutParams( 22,37,275,156 ) );
  layout.addView( ILABEL21 );
  It_touch_y = new t_touch_y();
- It_touch_y.setLayoutParams( new AbsoluteLayout.LayoutParams( 74,36,313,165 ) );
+ It_touch_y.setLayoutParams( new AbsoluteLayout.LayoutParams( 74,36,313,157 ) );
  layout.addView( It_touch_y );
  ILABEL22 = new LABEL22();
- ILABEL22.setLayoutParams( new AbsoluteLayout.LayoutParams( 98,31,13,215 ) );
+ ILABEL22.setLayoutParams( new AbsoluteLayout.LayoutParams( 98,31,14,202 ) );
  layout.addView( ILABEL22 );
  It_scale = new t_scale();
- It_scale.setLayoutParams( new AbsoluteLayout.LayoutParams( 61,32,119,215 ) );
+ It_scale.setLayoutParams( new AbsoluteLayout.LayoutParams( 61,32,119,204 ) );
  layout.addView( It_scale );
  ILABEL23 = new LABEL23();
- ILABEL23.setLayoutParams( new AbsoluteLayout.LayoutParams( 202,46,2,314 ) );
+ ILABEL23.setLayoutParams( new AbsoluteLayout.LayoutParams( 217,40,3,282 ) );
  layout.addView( ILABEL23 );
  It_interval = new t_interval();
- It_interval.setLayoutParams( new AbsoluteLayout.LayoutParams( 182,45,210,314 ) );
+ It_interval.setLayoutParams( new AbsoluteLayout.LayoutParams( 153,41,236,276 ) );
  layout.addView( It_interval );
+ ILABEL25 = new LABEL25();
+ ILABEL25.setLayoutParams( new AbsoluteLayout.LayoutParams( 273,45,68,322 ) );
+ layout.addView( ILABEL25 );
+ Ic_usebuffer = new c_usebuffer();
+ Ic_usebuffer.setLayoutParams( new AbsoluteLayout.LayoutParams( 28,35,22,327 ) );
+ layout.addView( Ic_usebuffer );
  GUI_created( layout );
 }
 }
 </codetext>
 </codeclip>
-<ID_maker>34</ID_maker>
-<height>328</height>
+<ID_maker>35</ID_maker>
+<height>346</height>
 <レイアウト>Setting
 325
 356
@@ -2037,42 +2132,39 @@ ACTIVITY.setTitle(&quot;Setting&quot;);
 255
 204
 xxscale=1.3
-LABEL;LABEL0;ADRS:;8;2;73;22;51;51;51;255;255;204;Dialog;12;null;2;1;1;0;0;TextView;
+LABEL;LABEL0;ADRS:;4;5;73;22;51;51;51;255;255;204;Dialog;12;null;0;0;1;0;0;TextView;
 TEXTFIELD;t_address;192.168.xxx.xxx;85;2;214;28;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
-LABEL;LABEL2;PORT:;7;33;64;27;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
+LABEL;LABEL2;PORT:;7;33;64;27;51;51;51;255;255;204;Dialog;12;null;0;0;1;0;0;TextView;
 TEXTFIELD;t_port;5001;85;32;61;28;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
-LABEL;LABEL4;DISPLAY;5;61;70;22;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
+LABEL;LABEL4;DISPLAY;5;61;70;22;51;51;51;255;255;204;Dialog;12;null;0;0;1;0;0;TextView;
 LABEL;LABEL5;X:;92;62;22;24;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
 TEXTFIELD;t_disp_x;0;124;62;46;26;51;51;51;255;255;255;Dialog;12;1;1;1;EditText;
 LABEL;LABEL7;Y:;180;59;20;28;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
 TEXTFIELD;t_disp_y;0;209;61;45;27;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
-LABEL;LABEL9;WIDTH:;6;92;67;25;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
+LABEL;LABEL9;WIDTH:;6;92;67;25;51;51;51;255;255;204;Dialog;12;null;0;0;1;0;0;TextView;
 TEXTFIELD;t_disp_width;640;86;95;48;24;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
 LABEL;LABEL11;HEIGHT:;151;88;80;28;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
 TEXTFIELD;t_disp_height;360;243;91;59;28;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
-BUTTON;b_connect;CONNECT;91;282;138;46;51;51;51;192;192;192;Dialog;12;null;0;0;1;1;1;Button;
-LABEL;LABEL16;PASS CODE:;7;195;115;27;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
-TEXTFIELD;t_pass;12345678;141;186;156;34;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
-LABEL;LABEL18;TOUCH OFFSET;5;128;103;20;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
-TEXTFIELD;t_touch_x;0;147;127;59;28;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
-LABEL;LABEL20;X:;122;128;18;24;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
-LABEL;LABEL21;Y:;212;129;17;29;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
-TEXTFIELD;t_touch_y;80;241;127;57;28;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
-LABEL;LABEL22;SCALE;10;166;76;24;51;51;51;247;252;201;Dialog;12;null;2;0;1;0;0;TextView;
-TEXTFIELD;t_scale;0;92;166;47;25;51;51;51;255;255;255;Dialog;12;1;1;1;EditText;
-LABEL;LABEL23;UPDATE INTERVAL;2;242;156;36;51;51;51;192;192;192;Dialog;12;null;2;0;1;0;1;TextView;
-TEXTFIELD;t_interval;100;162;242;140;35;51;51;51;255;255;255;Dialog;12;1;1;1;EditText;
+BUTTON;b_connect;CONNECT;72;289;138;46;51;51;51;192;192;192;Dialog;12;null;0;0;1;1;1;Button;
+LABEL;LABEL16;PASS CODE:;8;187;115;27;51;51;51;255;255;204;Dialog;12;null;0;0;1;0;0;TextView;
+TEXTFIELD;t_pass;12345678;144;176;156;34;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
+LABEL;LABEL18;OFFSET;0;126;105;21;51;51;51;255;255;204;Dialog;12;null;0;0;1;0;0;TextView;
+TEXTFIELD;t_touch_x;0;146;121;59;28;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
+LABEL;LABEL20;X:;122;122;18;24;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
+LABEL;LABEL21;Y:;212;120;17;29;51;51;51;255;255;204;Dialog;12;null;2;0;1;0;0;TextView;
+TEXTFIELD;t_touch_y;80;241;121;57;28;51;51;51;255;255;255;Dialog;12;1;1;0;EditText;
+LABEL;LABEL22;SCALE;11;156;76;24;51;51;51;247;252;201;Dialog;12;null;0;0;1;0;0;TextView;
+TEXTFIELD;t_scale;2;92;157;47;25;51;51;51;255;255;255;Dialog;12;1;1;1;EditText;
+LABEL;LABEL23;INTERVAL;3;217;167;31;51;51;51;253;253;177;Dialog;12;null;0;0;1;0;1;TextView;
+TEXTFIELD;t_interval;100;182;213;118;32;51;51;51;255;255;255;Dialog;12;1;1;1;EditText;
+LABEL;LABEL25;USE BUFFETR;53;248;210;35;51;51;51;253;253;177;Dialog;12;null;2;0;1;0;0;TextView;
+CHECKBOX;c_usebuffer;1;17;252;22;27;51;51;51;238;238;238;1;1;0;CheckBox;
 </レイアウト>
 </aobject>
 <relation>
-<ID>_R65</ID>
-<pin1name>_A30(_PAb_connect)</pin1name>
-<pin2name>_P58</pin2name>
-</relation>
-<relation>
-<ID>_R66</ID>
-<pin1name>_A30(_Pt_interval)</pin1name>
-<pin2name>_X17(_P36)</pin2name>
+<ID>_R67</ID>
+<pin1name>_A30(_Pc_usebuffer)</pin1name>
+<pin2name>_X17(_P39)</pin2name>
 </relation>
 </xobject>
 <operation>
@@ -2130,9 +2222,10 @@ change_display(SETTING);
 <y0>11</y0>
 <width>364</width>
 <height>60</height>
-<codetext>// JRDP
+<codetext>// JRDP リモートデスクトップシステム
 // リモートデスクトップクライアント for android ver 1.2
-// 変更点：O</codetext>
+// 変更点：イメージバッファを使ったOOMエラー対策
+</codetext>
 </codeclip>
 <ImgIcon>
 <ID>_I69</ID>
