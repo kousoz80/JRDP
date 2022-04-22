@@ -276,6 +276,14 @@ int main( int argc, char** argv ){
 }
 </ProgramStartupCode6>
 <NativeHelpCommand6></NativeHelpCommand6>
+<IDF_LocalVariable5>\</IDF_LocalVariable5>
+<IDF_LocalVariable7>\</IDF_LocalVariable7>
+<CompileCommand7></CompileCommand7>
+<RunCommand7></RunCommand7>
+<GUIDesignerCommand7></GUIDesignerCommand7>
+<ImportFiles7></ImportFiles7>
+<ProgramStartupCode7></ProgramStartupCode7>
+<NativeHelpCommand7></NativeHelpCommand7>
 </プロパティ>
 <codeclip>
 <ID>_CSTART</ID>
@@ -421,10 +429,11 @@ class IOThread extends Thread {
          
       dprint(&quot;start i/o thread\n&quot;);
       while( is_running ){
-        while( in.available() &lt; 5 ){
+        while( is_running &amp;&amp; in.available() &lt; 5 ){
           capture( out );
           try{  Thread.sleep(CYCLE_TIME);  } catch(Exception e ){}
         }
+        if(!is_running) break;
         cc[0] = (byte)0;
         in.read( cc, 0, 5 );
         int type  = (int)cc[0];
@@ -536,7 +545,7 @@ public void capture( DataOutputStream out ){
 	BufferedImage img2 = new BufferedImage( width, height, img.getType() );
 	img2.getGraphics().drawImage(img.getScaledInstance(width, height, img.SCALE_AREA_AVERAGING), 0, 0, width, height, null);
     ImageIO.write( img2, &quot;jpg&quot;, out );
-  } catch(Exception e ){dprint(&quot;capture: &quot;+e+&quot;\n&quot;);}
+  } catch(Exception e ){dprint(&quot;capture: &quot;+e+&quot;\n&quot;);is_running = false;}
 }
 </codetext>
 </codeclip>
