@@ -545,6 +545,7 @@ public void capture( DataOutputStream out ){
 	BufferedImage img2 = new BufferedImage( width, height, img.getType() );
 	img2.getGraphics().drawImage(img.getScaledInstance(width, height, img.SCALE_AREA_AVERAGING), 0, 0, width, height, null);
     ImageIO.write( img2, &quot;jpg&quot;, out );
+    System.gc();
   } catch(Exception e ){dprint(&quot;capture: &quot;+e+&quot;\n&quot;);is_running = false;}
 }
 </codetext>

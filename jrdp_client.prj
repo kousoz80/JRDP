@@ -474,6 +474,7 @@ try{
          display.draw(bitmap);
          bitmap.recycle();
          bitmap = null;
+         System.gc();
        }
 } catch (Exception e) { dprint(&quot;update screen: &quot;+e+&quot;\n&quot;); }
 }
