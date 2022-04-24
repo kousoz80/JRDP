@@ -179,6 +179,8 @@ import android.view.MotionEvent;
 import android.view.KeyEvent;
 import android.graphics.Rect;
 
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -321,6 +323,9 @@ class ClientThread extends Thread{
 
   public void run() {
     dprint(&quot;client thread start\n&quot;); 
+
+//while(true){
+    is_running = true;
   
     //接続・切断
     try {
@@ -345,7 +350,12 @@ class ClientThread extends Thread{
       }
       catch( Exception ie){}
     }
-  } 
+    
+    disconnect();
+//    try{ Thread.sleep(5000);}catch(Exception ee){}
+//  } 
+
+}
 }
 </codetext>
 </codeclip>
@@ -406,8 +416,8 @@ change_display(TERMINAL);
 <ID>_C7</ID>
 <x0>538</x0>
 <y0>7</y0>
-<width>421</width>
-<height>564</height>
+<width>429</width>
+<height>587</height>
 <codetext>// 定数
 static final int TERMINAL = 0;
 static final int SETTING = 1;
@@ -440,6 +450,7 @@ OutputStream out;
 byte[] outbuf = new byte[8];
 Bitmap bitmap;
 boolean is_running =false;
+boolean is_busy = true;
 AbsoluteLayout  l_setting; // 設定画面
 Button b_connect;
 
@@ -458,6 +469,7 @@ public void update_screen(){
 
 dprint(&quot;update screen\n&quot;);
 
+is_busy = true;
 try{
 
        if(use_buffer){
@@ -476,7 +488,18 @@ try{
          bitmap = null;
          System.gc();
        }
-} catch (Exception e) { dprint(&quot;update screen: &quot;+e+&quot;\n&quot;); }
+} catch (Throwable e) {
+
+  Toast.makeText( ACTIVITY.getApplicationContext(), &quot;ERROR!!&quot;, Toast.LENGTH_LONG).show();
+  try{
+    Thread.sleep(3000);
+    System.gc();
+  } catch (Exception xe) {}
+  is_running = false;
+
+}
+
+is_busy = false;
 }
 </codetext>
 </codeclip>
@@ -496,6 +519,7 @@ dprint(&quot;disconnect:\nsocket=&quot;+socket+&quot;\n&quot;);
     if( socket != null ){
       outbuf[0]=(byte)EXIT_EVENT;
       out.write(outbuf, 0, 6);
+      out.close();
       socket.close();
     }  
   } catch(Exception e){}
@@ -570,7 +594,9 @@ dprint(&quot;touch event up\n&quot;);
       outbuf[3]=(byte)(y &amp; 0xff);
       outbuf[4]=(byte)((y&gt;&gt;8) &amp; 0xff);
       try{
+         while(is_busy) Thread.sleep(1);
          out.write(outbuf, 0, 5);
+         Thread.sleep(10);
       } catch(Exception e){}
      }
 
@@ -597,7 +623,9 @@ dprint(&quot;key event action up\n&quot;);
         outbuf[3]=(byte)((keyCode&gt;&gt;16)&amp;0xff);
         outbuf[4]=(byte)((keyCode&gt;&gt;24)&amp;0xff);
         try{
+           while(is_busy) Thread.sleep(1);
            out.write(outbuf, 0, 5);
+           Thread.sleep(10);
         } catch(Exception e){}
       }
       return true;
@@ -613,6 +641,7 @@ dprint(&quot;key event action up\n&quot;);
       outbuf[3]=(byte)((keyCode&gt;&gt;16)&amp;0xff);
       outbuf[4]=(byte)((keyCode&gt;&gt;24)&amp;0xff);
       try{
+         while(is_busy) Thread.sleep(1);
          out.write(outbuf, 0, 5);
       } catch(Exception e){}
       return true;
